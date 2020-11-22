@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="ReportPmp" targetNamespace="http://tempuri.org/ReportPmp.xsd" elementFormDefault="qualified"
+	attributeFormDefault="qualified" xmlns="http://tempuri.org/ReportPmp.xsd" xmlns:mstns="http://tempuri.org/ReportPmp.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="ReportPmp" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="VIEW_REPORTPMP">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PMP_ID" type="xs:string" />
+							<xs:element name="FREQUENZA" type="xs:string" minOccurs="0" />
+							<xs:element name="FREQUENZA_DES" type="xs:string" minOccurs="0" />
+							<xs:element name="STD" type="xs:string" minOccurs="0" />
+							<xs:element name="DESC_STD" type="xs:string" minOccurs="0" />
+							<xs:element name="SERVIZIO" type="xs:string" minOccurs="0" />
+							<xs:element name="CODICE" type="xs:string" minOccurs="0" />
+							<xs:element name="DESC_BREVE" type="xs:string" minOccurs="0" />
+							<xs:element name="PASSO" type="xs:string" minOccurs="0" />
+							<xs:element name="NR_PASSO" type="xs:decimal" />
+							<xs:element name="TEMPO" type="xs:decimal" minOccurs="0" />
+							<xs:element name="DESCRIZIONE" type="xs:string" minOccurs="0" />
+							<xs:element name="CODICE_SETTORE" type="xs:string" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

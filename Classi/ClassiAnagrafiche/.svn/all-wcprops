@@ -1,0 +1,209 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche
+END
+Reperibilita.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Reperibilita.cs
+END
+Fornitori.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Fornitori.cs
+END
+PmpFrequenza.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/PmpFrequenza.cs
+END
+Buildings.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Buildings.cs
+END
+PianoFerie.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/PianoFerie.cs
+END
+DestUso.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/DestUso.cs
+END
+Pmp.cs
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Pmp.cs
+END
+Enti.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Enti.cs
+END
+Livelli.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Livelli.cs
+END
+UnitaMisura.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/UnitaMisura.cs
+END
+Categorie.cs
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Categorie.cs
+END
+LetturaContatori.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/LetturaContatori.cs
+END
+Reparti.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Reparti.cs
+END
+Contab.cs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Contab.cs
+END
+AllegatiEQ.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/AllegatiEQ.cs
+END
+TipoManutenzione.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/TipoManutenzione.cs
+END
+TipologiaDitta.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/TipologiaDitta.cs
+END
+Addetti.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Addetti.cs
+END
+PmpS.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/PmpS.cs
+END
+Contatti_tipo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Contatti_tipo.cs
+END
+Eqstd.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Eqstd.cs
+END
+Richiedenti_tipo.cs
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Richiedenti_tipo.cs
+END
+Contatti.cs
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Contatti.cs
+END
+Richiedenti.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Richiedenti.cs
+END
+TipoIntervento.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/TipoIntervento.cs
+END
+Settori.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Settori.cs
+END
+PercentualiStraordinari.cs
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/PercentualiStraordinari.cs
+END
+DestinatariProg.cs
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/DestinatariProg.cs
+END
+Fondi.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Fondi.cs
+END
+Motivo_assenza.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Motivo_assenza.cs
+END
+Stanze.cs
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Stanze.cs
+END
+ListaMateriali.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/ListaMateriali.cs
+END
+Destinatari.cs
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Destinatari.cs
+END
+Ditte.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/ClassiAnagrafiche/Ditte.cs
+END

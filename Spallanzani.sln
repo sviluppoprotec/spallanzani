@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spallanzani", "Spallanzani.csproj", "{EDBB5745-15A1-4630-9B02-BCA84824639E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDBB5745-15A1-4630-9B02-BCA84824639E}.Debug|Default.ActiveCfg = Debug|.NET
+		{EDBB5745-15A1-4630-9B02-BCA84824639E}.Debug|Default.Build.0 = Debug|.NET
+		{EDBB5745-15A1-4630-9B02-BCA84824639E}.Release|Default.ActiveCfg = Release|.NET
+		{EDBB5745-15A1-4630-9B02-BCA84824639E}.Release|Default.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B83E5499-D08D-4AAE-AB78-6FEFF6B6915F}
+	EndGlobalSection
+EndGlobal

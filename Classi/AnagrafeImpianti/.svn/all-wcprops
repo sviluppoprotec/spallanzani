@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti
+END
+AnagrafeDocDWF.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/AnagrafeDocDWF.cs
+END
+DatiTecniciApparecchiatura.cs
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/DatiTecniciApparecchiatura.cs
+END
+DatiApparecchiatura.cs
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/DatiApparecchiatura.cs
+END
+Passi.cs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/Passi.cs
+END
+AnagrafeServizi.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/AnagrafeServizi.cs
+END
+Apparecchiature.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/Apparecchiature.cs
+END
+DatiTecnici.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/DatiTecnici.cs
+END
+SchedaApparecchiatura.cs
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/SchedaApparecchiatura.cs
+END
+SeviceDettail.cs
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/SeviceDettail.cs
+END
+Certificati.cs
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/Certificati.cs
+END
+DataRoom.cs
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/DataRoom.cs
+END
+DocDWF.cs
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/DocDWF.cs
+END
+ServiziEdifici.cs
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/sir_2003/!svn/ver/9/sir_ifo/Classi/AnagrafeImpianti/ServiziEdifici.cs
+END
