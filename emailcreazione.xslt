@@ -16,7 +16,7 @@
          RdL nr: <b><xsl:value-of select="idrichiesta" /></b>.<br/>
          Descrizione del problema: <xsl:value-of select="descrizione" />
          <br/>
-         Per ulteriori informazioni <a href="http://sir.cofasir.it/ifo">http://sir.cofasir.it/ifo</a>
+         Per ulteriori informazioni <a href="http://spallanzani.cofasir.it">http://spallanzani.cofasir.it</a>
          <br/>
          Distinti Saluti.
 		</FONT></DIV></BODY></HTML>
