@@ -135,7 +135,7 @@
 																			align="center" border="0">
 																			<TR>
 																				<TD noWrap align="left">
-																					<CC1:S_BUTTON id="S_BtnSubmit" tabIndex="9" runat="server" cssclass="btn" text="Genera il Report in Html"
+																					<CC1:S_BUTTON id="S_BtnSubmit" tabIndex="9" runat="server" Visible="false" cssclass="btn" text="Genera il Report in Html"
 																						width="150px"></CC1:S_BUTTON></TD>
 																				<TD>
 																					<ASP:BUTTON id="btnReportPdf" runat="server" cssclass="btn" text="Genera il Report In Pdf" width="150px"></ASP:BUTTON></TD>

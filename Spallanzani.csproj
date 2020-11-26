@@ -246,6 +246,10 @@
       <DependentUpon>DatiTecnici.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="AnagrafeImpianti\DettProcedurePassi.aspx.cs">
+      <DependentUpon>DettProcedurePassi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="AnagrafeImpianti\DocImageGalery.aspx.cs">
       <DependentUpon>DocImageGalery.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1683,6 +1687,10 @@
       <DependentUpon>MostraPianoMP.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="ManutenzioneProgrammata\NavigazioneAttivitapmp.aspx.cs">
+      <DependentUpon>NavigazioneAttivitapmp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="ManutenzioneProgrammata\PassiPianoAnnuale.aspx.cs">
       <DependentUpon>PassiPianoAnnuale.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2742,6 +2750,7 @@
       <SubType>Form</SubType>
     </Content>
     <Content Include="AnagrafeImpianti\DatiTecnici.aspx" />
+    <Content Include="AnagrafeImpianti\DettProcedurePassi.aspx" />
     <Content Include="AnagrafeImpianti\DocImageGalery.aspx" />
     <Content Include="AnagrafeImpianti\Eq_DocumentiAllegati.aspx">
       <SubType>Form</SubType>
@@ -2896,14 +2905,12 @@
     <Content Include="Default.aspx" />
     <Content Include="email.xslt" />
     <Content Include="emailcreazione.xslt" />
-    <Content Include="EQImages\ImmagineNonDisponibile.jpg" />
     <Content Include="Errore\errore.html" />
     <Content Include="Errore\image001.jpg" />
     <Content Include="ErrorPage.aspx">
       <SubType>Form</SubType>
     </Content>
     <Content Include="esempio.htm" />
-    <Content Include="FileWebStat\statisticheWeb_Anno_2011_Week_23.txt" />
     <Content Include="GestioneControlliPeriodici\CP.aspx" />
     <Content Include="GestioneControlliPeriodici\INSCP.aspx" />
     <Content Include="GestioneSpazi\RicercaSpazi.aspx">
@@ -4581,8 +4588,6 @@
     <Content Include="HelpApplication\LeftFrame.aspx" />
     <Content Include="HelpApplication\Login.aspx" />
     <Content Include="HelpApplication\MainContent.aspx" />
-    <Content Include="Images\3.gif" />
-    <Content Include="Images\3_logo.jpg" />
     <Content Include="Images\annulla.gif" />
     <Content Include="Images\attach.png" />
     <Content Include="Images\bg.jpg" />
@@ -4630,7 +4635,6 @@
     <Content Include="Images\immagini\RoundedOrangeExplorer.gif" />
     <Content Include="Images\immagini\uparrows_white.gif" />
     <Content Include="Images\kcalc.jpg" />
-    <Content Include="Images\LogoUsl3Catania.jpg" />
     <Content Include="Images\lucc.gif" />
     <Content Include="Images\mail.gif" />
     <Content Include="Images\no pdf_logo.gif" />
@@ -4661,9 +4665,7 @@
     <Content Include="Images\up.gif" />
     <Content Include="Images\uparrows_trans.gif" />
     <Content Include="Images\uparrows_trans_old.gif" />
-    <Content Include="Images\Usl3Catania.jpg" />
     <Content Include="Images\view.gif" />
-    <Content Include="Images\vodafone_logo.gif" />
     <Content Include="Images\w.gif" />
     <Content Include="javascript.htm" />
     <Content Include="Js\CommonScript.js" />
@@ -4786,6 +4788,7 @@
     <Content Include="ManutenzioneProgrammata\MostraPianoMP.aspx">
       <SubType>Form</SubType>
     </Content>
+    <Content Include="ManutenzioneProgrammata\NavigazioneAttivitapmp.aspx" />
     <Content Include="ManutenzioneProgrammata\PassiPianoAnnuale.aspx" />
     <Content Include="ManutenzioneProgrammata\PianoAnnuale.aspx" />
     <Content Include="ManutenzioneProgrammata\PianoManutenzioneProgrammata.aspx">
@@ -5338,11 +5341,7 @@
     <Content Include="webctrl_client\1_0\webservice.htc" />
     <Content Include="webctrl_client\1_0\webserviced.htc" />
     <Content Include="XSLT\XSLsgaRpt04.xslt" />
-    <Content Include="XSLT\XSLsgaRptVod04.xslt">
-      <SubType>UserControl</SubType>
-    </Content>
     <Content Include="XSLT\XSLTDIE.xslt" />
-    <Content Include="XSLT\XSLTDIEVod.xslt" />
     <EmbeddedResource Include="Admin\EditFunzioni.aspx.resx">
       <DependentUpon>EditFunzioni.aspx.cs</DependentUpon>
     </EmbeddedResource>
@@ -5384,6 +5383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AnagrafeImpianti\DatiTecnici.aspx.resx">
       <DependentUpon>DatiTecnici.aspx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AnagrafeImpianti\DettProcedurePassi.aspx.resx">
+      <DependentUpon>DettProcedurePassi.aspx.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AnagrafeImpianti\DocImageGalery.aspx.resx">
       <DependentUpon>DocImageGalery.aspx.cs</DependentUpon>
@@ -6015,6 +6017,9 @@
     <EmbeddedResource Include="ManutenzioneProgrammata\MostraPianoMP.aspx.resx">
       <DependentUpon>MostraPianoMP.aspx.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManutenzioneProgrammata\NavigazioneAttivitapmp.aspx.resx">
+      <DependentUpon>NavigazioneAttivitapmp.aspx.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManutenzioneProgrammata\PassiPianoAnnuale.aspx.resx">
       <DependentUpon>PassiPianoAnnuale.aspx.cs</DependentUpon>
     </EmbeddedResource>
@@ -6543,6 +6548,7 @@
     </EmbeddedResource>
     <None Include="AslMobile\images\Thumbs.db" />
     <None Include="calendar\images\Thumbs.db" />
+    <None Include="FolderProfile.pubxml" />
     <None Include="GIC\App_Code\DataSetDef\DataSetReport.xsx">
       <DependentUpon>DataSetReport.xsd</DependentUpon>
     </None>
@@ -6610,102 +6616,6 @@
     <Content Include="StampaRapportiPDF_new\Schemixsd\DatasetReport.xsx">
       <DependentUpon>DatasetReport.xsd</DependentUpon>
     </Content>
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6110-nOdl_10-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6110-nOdl_10-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6111-nOdl_10-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6111-nOdl_10-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6112-nOdl_5-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6112-nOdl_5-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6113-nOdl_3-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6113-nOdl_3-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6114-nOdl_3-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6114-nOdl_3-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6115-nOdl_3-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6115-nOdl_3-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6116-nOdl_1-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6116-nOdl_1-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6117-nOdl_10-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6117-nOdl_10-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6118-nOdl_10-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6118-nOdl_10-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6119-nOdl_11-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6119-nOdl_11-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6120-nOdl_44-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6120-nOdl_44-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6121-nOdl_20-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6121-nOdl_20-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6122-nOdl_4-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6122-nOdl_4-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6129-nOdl_6-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6129-nOdl_6-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6130-nOdl_3-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6130-nOdl_3-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6131-nOdl_19-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6131-nOdl_19-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6132-nOdl_1-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6132-nOdl_1-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6133-nOdl_12-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6133-nOdl_12-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6134-nOdl_5-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6134-nOdl_5-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6149-nOdl_1-Solo_Cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6149-nOdl_1-Solo_Cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6150-nOdl_1-IFOPL3-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6150-nOdl_1-IFOPL3-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6151-nOdl_1-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6151-nOdl_1-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6152-nOdl_29-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6152-nOdl_29-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6155-nOdl_50-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6155-nOdl_50-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6156-nOdl_45-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6156-nOdl_45-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6157-nOdl_8-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6157-nOdl_8-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6158-nOdl_17-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6158-nOdl_17-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6159-nOdl_7-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6159-nOdl_7-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6160-nOdl_50-Solo_Cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6160-nOdl_50-Solo_Cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6161-nOdl_50-Solo_Cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6161-nOdl_50-Solo_Cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6162-nOdl_16-Solo_Cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6162-nOdl_16-Solo_Cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6169-nOdl_1-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6169-nOdl_1-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6170-nOdl_1-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6170-nOdl_1-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6189-nOdl_14-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6189-nOdl_14-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6190-nOdl_44-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6190-nOdl_44-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6191-nOdl_51-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6191-nOdl_51-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6192-nOdl_3-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6192-nOdl_3-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6193-nOdl_17-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6193-nOdl_17-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6194-nOdl_1-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6194-nOdl_1-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6209-nOdl_109-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6209-nOdl_109-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6210-nOdl_50-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6210-nOdl_50-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6211-nOdl_11-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6211-nOdl_11-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6212-nOdl_55-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6212-nOdl_55-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6213-nOdl_55-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6213-nOdl_55-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6214-nOdl_5-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6214-nOdl_5-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6215-nOdl_48-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6215-nOdl_48-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6216-nOdl_15-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6216-nOdl_15-Solo_non_cmplt-rpt_lng.zip" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6217-nOdl_3-Solo_non_cmplt-rpt_lng.pdf" />
-    <Content Include="StampaRapportiPDF_new\Stampe\id_6217-nOdl_3-Solo_non_cmplt-rpt_lng.zip" />
     <Content Include="StampaRapportiPDF_new\Stampe\prima versione\id_221-nOdl_1-PU001-Solo_non_cmplt-rpt_crt.pdf" />
     <Content Include="StampaRapportiPDF_new\Stampe\prima versione\id_241-nOdl_1-Solo_non_cmplt-rpt_lng.pdf" />
     <Content Include="StampaRapportiPDF_new\Stampe\prima versione\id_242-nOdl_1-Solo_non_cmplt-rpt_lng.pdf" />
@@ -6737,6 +6647,8 @@
     <Folder Include="DocumentiProgetto\" />
     <Folder Include="Doc_DB\" />
     <Folder Include="EQAllegati\" />
+    <Folder Include="EQImages\" />
+    <Folder Include="FileWebStat\" />
     <Folder Include="HelpApplication\Help\Images\" />
     <Folder Include="Images\H3G\" />
     <Folder Include="Log\" />
