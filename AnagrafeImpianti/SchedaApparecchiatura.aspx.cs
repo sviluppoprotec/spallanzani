@@ -329,7 +329,7 @@ namespace TheSite.CommonPage
 
 				string iddiv=((HtmlGenericControl)e.Item.Controls[15]).ClientID;
 				HtmlAnchor  Anchor=(HtmlAnchor)e.Item.Controls[1];
-				HtmlImage img =(HtmlImage)e.Item.Controls[1].Controls[0];
+				LiteralControl img =(LiteralControl)e.Item.Controls[1].Controls[0];
 				Anchor.HRef="javascript:hideControl('" + iddiv + "','" + img.ClientID + "');"; 
 
 				Repeater repeta =(Repeater)e.Item.FindControl("repetarpassi");

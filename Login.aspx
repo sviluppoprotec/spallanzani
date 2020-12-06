@@ -12,7 +12,7 @@
 		<STYLE type="text/css">BODY { MARGIN: 0px }
 	INPUT { BORDER-BOTTOM: #464a50 1px solid; BORDER-LEFT: #464a50 1px solid; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; PADDING-RIGHT: 2px; FONT-FAMILY: Tahoma; COLOR: #0a305c; FONT-SIZE: 11px; BORDER-TOP: #464a50 1px solid; FONT-WEIGHT: normal; BORDER-RIGHT: #464a50 1px solid; PADDING-TOP: 2px }
 		</STYLE>
-		<LINK href="Styles/MenuStyle.css" type="text/css" rel="stylesheet">
+		<!--<LINK href="Styles/MenuStyle.css" type="text/css" rel="stylesheet">-->
 		<LINK href="Css/MainSheet.css" type="text/css" rel="stylesheet">
 		<SCRIPT language="javascript">		 
 		 if (typeof(parent.left) != "undefined")

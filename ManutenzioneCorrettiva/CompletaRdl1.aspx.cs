@@ -20,7 +20,6 @@ using System.Globalization;
 
 
 
-
 namespace TheSite.ManutenzioneCorrettiva
 {
 	/// <summary>
@@ -29,9 +28,8 @@ namespace TheSite.ManutenzioneCorrettiva
 	public class CompletaRdl1 : System.Web.UI.Page
 	{
 		#region dichiarazioni variabili
-		protected WebControls.CalendarPicker CalendarPicker1;
 		protected WebControls.CalendarPicker CalendarPicker2;
-		protected WebControls.CalendarPicker CalendarPicker4;
+		protected WebControls.CalendarPicker CalendarPicker5;
 		protected WebControls.CalendarPicker CalendarPicker6;
 		protected WebControls.CalendarPicker CalendarPicker7;
 		protected WebControls.CalendarPicker CalendarPicker8;
@@ -39,6 +37,8 @@ namespace TheSite.ManutenzioneCorrettiva
 		public Classi.SiteModule _SiteModule;
 		protected System.Web.UI.WebControls.Label lblNote;
 		protected System.Web.UI.WebControls.Label lblTelefono;
+		protected System.Web.UI.WebControls.Label lblStanza;
+		protected System.Web.UI.WebControls.Label lblPiano;
 		protected System.Web.UI.WebControls.TextBox txtHidBl;
 		protected System.Web.UI.WebControls.Label lblfabbricato;
 		protected System.Web.UI.WebControls.Label lblstanzaric;
@@ -59,12 +59,15 @@ namespace TheSite.ManutenzioneCorrettiva
 		protected S_Controls.S_TextBox txtEffettoGuasto;
 		protected Csy.WebControls.DataPanel PanelGeneral;
 		protected S_Controls.S_ComboBox cmbsTipoManutenzione;
-		protected WebControls.PageTitle PageTitle1;
+		protected Csy.WebControls.DataPanel Datapanel1;
+	
 		protected System.Web.UI.WebControls.Label lblSeguito1;
 		protected System.Web.UI.WebControls.Label lblSeguito2;
-		protected WebControls.AggiungiReclamo AggiungiReclamo;
-		protected WebControls.AggiungiSollecito AggiungiSollecito;
-		protected WebControls.AggiungiChiariInfo AggiungiChiariInfo;
+		
+	
+		protected WebControls.VisualizzaSolleciti VisualizzaSolleciti1;
+		protected WebControls.AggiungiSollecito AggiungiSollecito1;
+		
 		bool IsEditable=false;
 		Classi.ManCorrettiva.ClManCorrettiva _ClManCorrettiva;
 		protected S_Controls.S_TextBox txtSoluzioneProposta;
@@ -76,6 +79,7 @@ namespace TheSite.ManutenzioneCorrettiva
 		protected System.Web.UI.HtmlControls.HtmlInputFile UploadFile;
 		protected Csy.WebControls.DataPanel Datapanel3;
 		protected System.Web.UI.WebControls.Label LblOrdine;
+		protected S_Controls.S_ComboBox cmbsDitta;
 		protected S_Controls.S_ComboBox cmbsAddetto;
 		protected S_Controls.S_ComboBox cmbsUrgenza;
 		protected System.Web.UI.WebControls.Label LblMessaggio;
@@ -103,30 +107,17 @@ namespace TheSite.ManutenzioneCorrettiva
 		protected System.Web.UI.WebControls.Label presidio;
 		protected S_Controls.S_ComboBox cmbminfinelav;
 		protected S_Controls.S_ComboBox cmborafinelav;
-
+		protected S_Controls.S_TextBox txtImp1;
+		protected S_Controls.S_TextBox txtImp1_1;
 		protected S_Controls.S_TextBox txtPercentuale1;
-		
-		
+		protected S_Controls.S_TextBox txtImp2;
+		protected S_Controls.S_TextBox txtImp2_1;
 		protected S_Controls.S_TextBox txtPercentuale2;
 		protected S_Controls.S_TextBox txtModalitaPagamento;
 		protected S_Controls.S_TextBox txtNoteSga;
 		protected System.Web.UI.WebControls.Button BtInviaPreventivo;
 		protected System.Web.UI.HtmlControls.HtmlInputFile FilePreventivo;
-		protected S_Controls.S_OptionButton OptAMisura;
-		protected S_Controls.S_OptionButton OptAForfait;
-		protected S_Controls.S_TextBox TxtAForfait;
-		protected S_Controls.S_TextBox txtCostiMateriali1;
-		protected S_Controls.S_TextBox txtCostiMateriali2;
-		protected S_Controls.S_TextBox txtCostiPersonale1;
-		protected S_Controls.S_TextBox txtCostiPersonale2;
-		protected S_Controls.S_TextBox txtCostiTotale1;
-		protected S_Controls.S_TextBox txtCostiTotale2;
-		protected System.Web.UI.WebControls.Label lblCostoMateriali;
-		protected System.Web.UI.WebControls.Label lblCostiPersonale;
-		protected System.Web.UI.WebControls.Label LblTotale;
-		protected System.Web.UI.WebControls.Label LblTotMateriali;
-		protected System.Web.UI.WebControls.Label LblTotPersonale;
-		protected System.Web.UI.WebControls.Label LblTotGenerale;
+		protected S_Controls.S_TextBox txtSeguito4;
 		protected S_Controls.S_TextBox ImpCons1;
 		protected S_Controls.S_TextBox ImpCons2;
 		protected System.Web.UI.WebControls.Button BtInviaCons;
@@ -155,56 +146,38 @@ namespace TheSite.ManutenzioneCorrettiva
 		protected System.Web.UI.HtmlControls.HtmlInputFile FileConsuntivo;
 		protected System.Web.UI.HtmlControls.HtmlGenericControl azioni;
 		protected Csy.WebControls.DataPanel Datapanel2;
-		protected System.Web.UI.WebControls.TextBox txtOperazioneN;
-		protected S_Controls.S_ComboBox CmbMese;
-		protected System.Web.UI.WebControls.CheckBox Ck1;
-		protected System.Web.UI.WebControls.CheckBox Ck2;
 		protected System.Web.UI.WebControls.Button btFoglio;
 		protected System.Web.UI.WebControls.DropDownList cmbsCdC;
-	    protected System.Web.UI.WebControls.DropDownList cmbCdC;
+		protected System.Web.UI.WebControls.DropDownList cmbCdC;
 		protected Csy.WebControls.DataPanel Datapanel6;
-		protected S_Controls.S_ComboBox OraSopralluogo;
-		protected S_Controls.S_ComboBox MinutiSopralluogo;
 		protected System.Web.UI.WebControls.Repeater Repeater1;
-		protected System.Web.UI.WebControls.Repeater Repeater2;
-		protected System.Web.UI.WebControls.Repeater Repeater3;
-		protected Csy.WebControls.DataPanel Datapanel1;
-		protected Csy.WebControls.DataPanel Datapanel7;
-		protected Csy.WebControls.DataPanel Datapanel8;
-		protected System.Web.UI.WebControls.TextBox txtord;
-		protected S_Controls.S_ComboBox S_PIANO;
-		protected S_Controls.S_Label S_Lblcodedificio1;
-		protected System.Web.UI.WebControls.Button Button1;
-		protected WebControls.UserStanzeRic UserStanzeRic1;
-		protected WebControls.RicercaModulo RicercaModulo1;
-		protected S_Controls.S_ComboBox S_macroarea;
-		protected S_Controls.S_ComboBox S_COMBOBOX4;
-		protected S_Controls.S_ComboBox S_COMBOBOX3;
-		protected S_Controls.S_ComboBox S_tipintervento;
-		
-		
+		protected System.Web.UI.WebControls.Button Button1;		
+		protected System.Web.UI.WebControls.TextBox txtNoteAggiuntive;
+		protected System.Web.UI.WebControls.Button btn_S_Hlav;
+		protected System.Web.UI.WebControls.Label lblhlav;
+		protected S_Controls.S_TextBox txtnrconsuntivo;
+		protected System.Web.UI.WebControls.Button Button2;
+		protected WebControls.PageTitle PageTitle1;
+		protected S_Controls.S_ComboBox S_COMBOBOX5;
+		protected S_Controls.S_ComboBox S_COMBOBOX6;
+		protected System.Web.UI.WebControls.Button Button3;
 		string chiamante;
 
 		#endregion
 		private void Page_Load(object sender, System.EventArgs e)
 		{
-			LkCons.Target="_blank";
 			//Istanzio la classe 
 			_ClManCorrettiva=new TheSite.Classi.ManCorrettiva.ClManCorrettiva(Context.User.Identity.Name);
 			// Inserire qui il codice utente necessario per inizializzare la pagina.
 			// ***********************  MODIFICA PER I PERMESSI SULLA PAGINA CORRENTE **********************
 			string _mypage="./ManutenzioneCorrettiva/CompletaRdl1.aspx";			
 			_SiteModule = new TheSite.Classi.SiteModule(_mypage);
-			PageTitle1.Title="Aggiorna RdL";
+			PageTitle1.Title="Aggiorna Stato RdL";
 			// *********************************************************************************************
 			this.IsEditable=_SiteModule.IsEditable;
 
 			//Imposto le proprieta sui controlli
 			SetProperty();
-			UserStanzeRic1.NameLblId = "S_Lblcodedificio1";			
-			UserStanzeRic1.NameComboPiano="S_PIANO";
-			UserStanzeRic1.NameUserControlRicercaModulo = "RicercaModulo1";
-
 			if(Request["wr_id"]!=null)
 				wr_id=int.Parse(Request["wr_id"]);
 			if(Request["chiamante"]!=null)
@@ -215,21 +188,21 @@ namespace TheSite.ManutenzioneCorrettiva
 			Datapanel5.Visible=true;
 			//Faccio i conti
 			
-			DataSet DsManodoperaCosti = _ClManCorrettiva.TotManodopera(wr_id);			
-						if(DsManodoperaCosti.Tables[0].Rows.Count>0)
-						{
-							DataRow riga= DsManodoperaCosti.Tables[0].Rows[0];
-							lblCostiPersonale.Text=riga["totaddetto"].ToString();
-							lblCostoMateriali.Text=riga["totmateriale"].ToString();
-							double tot=double.Parse(riga["totaddetto"].ToString()) + double.Parse(riga["totmateriale"].ToString());
-							LblTotale.Text=tot.ToString();
-						}
-						else
-						{
-							lblCostiPersonale.Text="0";
-							lblCostoMateriali.Text="0";
-							LblTotale.Text="0";
-						}
+//			DataSet DsManodoperaCosti = _ClManCorrettiva.TotManodopera(wr_id);			
+//						if(DsManodoperaCosti.Tables[0].Rows.Count>0)
+//						{
+//							DataRow riga= DsManodoperaCosti.Tables[0].Rows[0];
+//							lblCostiPersonale.Text=riga["totaddetto"].ToString();
+//							lblCostoMateriali.Text=riga["totmateriale"].ToString();
+//							double tot=double.Parse(riga["totaddetto"].ToString()) + double.Parse(riga["totmateriale"].ToString());
+//							LblTotale.Text=tot.ToString();
+//						}
+//						else
+//						{
+//							lblCostiPersonale.Text="0";
+//							lblCostoMateriali.Text="0";
+//							LblTotale.Text="0";
+//						}
 				
 			#endregion
 			if(!IsPostBack)
@@ -265,51 +238,19 @@ namespace TheSite.ManutenzioneCorrettiva
 //								{
 //									CaricaFondi();
 //								}
-
-				string funzioneJsCalcolaTotale = "javascript:RicalcolaTotaliAG();";					
-				txtCostiMateriali1.Attributes.Add("onkeyup",funzioneJsCalcolaTotale);
-				txtCostiMateriali2.Attributes.Add("onkeyup",funzioneJsCalcolaTotale);
-
-				 				
-				txtCostiPersonale1.Attributes.Add("onkeyup",funzioneJsCalcolaTotale);
-				txtCostiPersonale2.Attributes.Add("onkeyup",funzioneJsCalcolaTotale);
-
-			 				
-				txtCostiTotale1.Attributes.Add("onkeyup",funzioneJsCalcolaTotale);
-				txtCostiTotale2.Attributes.Add("onkeyup",funzioneJsCalcolaTotale);
 			}
-
-			//Carico i solleciti della RdL
-			LoadSolleciti();
-			
-			//Carico i reclami della RdL
-			LoadReclami();
-			//Carico le rcihieste informazioni-chiarimenti RdL
-			LoadChiarInfo();
-
 			SetVisible();
 			
 			///Parte riguardante i solleciti
-			AggiungiSollecito.Progetto=HPrj.Value;
-			AggiungiSollecito.TxtID_WR=this.wr_id.ToString();
-//			VisualizzaSolleciti1.TxtID_WR=this.wr_id.ToString();
-			
-			// REclamo
-			AggiungiReclamo.Progetto=HPrj.Value;
-			AggiungiReclamo.TxtID_WR=this.wr_id.ToString();
-			
-			//Chiarimento e Informazioni
-			AggiungiChiariInfo.Progetto=HPrj.Value;
-			AggiungiChiariInfo.TxtID_WR=this.wr_id.ToString();
-
+			AggiungiSollecito1.Progetto=HPrj.Value;
+			AggiungiSollecito1.TxtID_WR=this.wr_id.ToString();
+			VisualizzaSolleciti1.TxtID_WR=this.wr_id.ToString();
 			//Imposto la combo della manutenzione
-			Page.RegisterStartupScript("tipman","<script language='javascript'>SetPreventivo(document.getElementById('" + cmbsTipoManutenzione.ClientID + "').value);</script>");
+			//Page.RegisterStartupScript("tipman","<script language='javascript'>SetPreventivo(document.getElementById('" + cmbsTipoManutenzione.ClientID + "').value);</script>");
 			if (Datapanel5.Visible==true)
 			{
 				Page.RegisterStartupScript("sum","<script language='javascript'>somma();</script>");
 			}
-
-
 		}
 
 		#region Dati Per il ritorno in Back
@@ -364,26 +305,63 @@ namespace TheSite.ManutenzioneCorrettiva
 		//Imposto le proprieta sui controlli
 		private void SetProperty()
 		{
-			
+			//FileConsuntivo.Attributes.Add("onchange", "return checkFileExtension(this);");
+			//FilePreventivo.Attributes.Add("onchange", "return checkFileExtension(this);");
 
 			txtImpPrev1.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
 			txtImpPrev2.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
 
-
+			txtImp1.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+			txtImp1_1.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+			txtImp2.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+			txtImp2_1.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+			//            txtCostiTotale1.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+			//			txtCostiMateriali1.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+			//			txtCostiPersonale1.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+			//
+			//			txtCostiMateriali1.Attributes.Add("onkeyup","somma();");
+			//			txtCostiPersonale1.Attributes.Add("onkeyup","somma()");
+			//			txtCostiMateriali2.Attributes.Add("onkeyup","somma();");
+			//			txtCostiPersonale2.Attributes.Add("onkeyup","somma()");
+			//
+			//			txtCostiTotale1.Attributes.Add("onkeyup","somma()");
+			//			txtCostiTotale2.Attributes.Add("onkeyup","somma()");
+			//
+			//			txtCostiTotale2.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+			//			txtCostiMateriali2.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+			//			txtCostiPersonale2.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
 
 			txtImpPrev1.Attributes.Add("onpaste","return false;");
 			txtImpPrev2.Attributes.Add("onpaste","return false;");
 
-
+			txtImp1.Attributes.Add("onpaste","return false;");
+			txtImp1_1.Attributes.Add("onpaste","return false;");
+			txtImp2.Attributes.Add("onpaste","return false;");
+			txtImp2_1.Attributes.Add("onpaste","return false;");
+			//			txtCostiTotale1.Attributes.Add("onpaste","return false;");
+			//			txtCostiMateriali1.Attributes.Add("onpaste","return false;");
+			//			txtCostiPersonale1.Attributes.Add("onpaste","return false;");
+			//
+			//			txtCostiTotale2.Attributes.Add("onpaste","return false;");
+			//			txtCostiMateriali2.Attributes.Add("onpaste","return false;");
+			//			txtCostiPersonale2.Attributes.Add("onpaste","return false;");
 
 			TxtNumPreventivo.Attributes.Add("onpaste","return false;");
+			//TxtNumPreventivo.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
 			
+			//			ImpCons1.Attributes.Add("onpaste","return false;");
+			//			ImpCons1.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+			//			ImpCons2.Attributes.Add("onpaste","return false;");
+			//			ImpCons2.Attributes.Add("onkeypress","return caratteriok(event,'0123456789');");
+		
 			
 			BtSalvaSGA.Attributes.Add("onclick","return IsValidDateWork();"); 
 			btApprova.Attributes.Add("onclick","return IsEmissione();");
 
-			BtSalva.Attributes.Add("onclick","return IsCompleta();");
-			BtDIE.Attributes.Add("onclick","return IsCompleta();");
+			//BtSalva.Attributes.Add("onclick","return IsCompleta();");			
+			//BtDIE.Attributes.Add("onclick","return IsCompleta();");
+
+			btn_S_Hlav.Attributes.Add("onclick","return IsCompleta();");
 
 			btImgDelete.Attributes.Add("onclick","return deletedoc();");
 
@@ -427,18 +405,15 @@ namespace TheSite.ManutenzioneCorrettiva
 				btApprova.Visible =false;
 				btSospendi.Visible =false;
 				btRifiuta.Visible =false;
-				Button1.Visible=false;
+				Button2.Visible=false;
 				//BtSalvaSGA.Visible=false;
 				//btChiudi.Visible=false;
 				Datapanel4.Visible=true;
 				Datapanel5.Visible=true;
-				Datapanel5.Collapsed=false; // sezione consuntivo economico
+				Datapanel5.Collapsed=true; // sezione consuntivo economico
 				//Datapanel3.Collapsed=true; // sezione emissione ordine
 				Datapanel2.Collapsed=true; //documentazione
-				Datapanel1.Collapsed=true;
-				Datapanel7.Collapsed=true;
-				Datapanel8.Collapsed=true;
-				//Datapanel1.Collapsed =true;
+				Datapanel1.Collapsed =true;
 				if (!Context.User.IsInRole("callcenter"))
 					Page.RegisterStartupScript("sr","<script language='javascript'>SetStato(document.getElementById('" + cmbsstatolavoro.ClientID + "').value);</script>");
 
@@ -450,27 +425,22 @@ namespace TheSite.ManutenzioneCorrettiva
 			else //approvazione
 			{
 				
-				btApprova.Visible =true;
-				btSospendi.Visible =true;
-				btRifiuta.Visible =true;
-				Button1.Visible=true;
+				
 				Datapanel4.Visible=false;
 				Datapanel5.Visible=false;
 				azioni.Visible=false;
 				
 			}
-//			if (Context.User.IsInRole("callcenter"))
-//			{
-//				Datapanel2.Visible=false; //Documentazione
-//				btApprova.Visible =false;
-//				btSospendi.Visible =false;
-//				btRifiuta.Visible =false;
-//				Datapanel4.Visible=false; 
-//				Datapanel5.Visible=false;
-//				Datapanel1.Visible=false;
-//				Datapanel7.Visible=false;
-//				Datapanel8.Visible=false;
-//			}
+			if (Context.User.IsInRole("callcenter"))
+			{
+				Datapanel2.Visible=false; //Documentazione
+				btApprova.Visible =false;
+				btSospendi.Visible =false;
+				Button2.Visible=true;
+				btRifiuta.Visible =false;
+				Datapanel4.Visible=false; 
+				Datapanel5.Visible=false;
+			}
 
 		}
 //		private void SetImportiEnable()
@@ -502,8 +472,6 @@ namespace TheSite.ManutenzioneCorrettiva
 			LoadTipoManutenzione();
 			//Carico a il combo Del Tipo Intervento
 			LoadTipoIntervento();
-			//Carico i Piani 
-			LoadMacroArea();
 			
 			
 			//Carico i dati della Richiesta
@@ -514,36 +482,21 @@ namespace TheSite.ManutenzioneCorrettiva
 			}
 			DataRow _Dr = _Ds.Tables[0].Rows[0];
 			//Carico le ditte associate all'edificio
-			
+			LoadDitte(int.Parse(_Dr["id_bl"].ToString()),int.Parse(_Dr["servizio_id"].ToString()) );
 			//Id dell'edificio
 			hidBl_id.Value =_Dr["id_bl"].ToString();
-			
+
 			txtHidBl.Text=_Dr["bl_id"].ToString();
-			//Carico i Piani 
-			//LoadPiani();
-			LoadPianibl(_Dr["id_bl"].ToString());
 
 
-			S_Lblcodedificio1.Text=_Dr["bl_id"].ToString();	
-
-			//Carico i documenti allegati della RdL
+			//Carico i documenti allegati
 			LoadDocument();
-
-
-//			//Carico i solleciti della RdL
-//			LoadSolleciti();
-//			
-//			//Carico i reclami della RdL
-//			LoadReclami();
-//			//Carico le rcihieste informazioni-chiarimenti RdL
-//			LoadChiarInfo();
-
-
 			//Carico i documenti allegati al preventivo
 			LoadDocumentPrev();
 			//carico i documenti allegati al consuntivo
 			LoadDocumentCons();
-
+			// carico le h lavorate per Rdl
+			LoadHLAV();
 
 			HPrj.Value=_Dr["id_progetto"].ToString();
 
@@ -571,7 +524,7 @@ namespace TheSite.ManutenzioneCorrettiva
 			}
 			
 			//Imposto la visibilità
-			//SetVisible();
+			SetVisible();
 
 			if(_Dr["id_wr_status"].ToString()=="4")
 			{
@@ -596,7 +549,6 @@ namespace TheSite.ManutenzioneCorrettiva
 			
 			//WO RDL
 			
-
 			if (_Dr["wo_id"] != DBNull.Value)
 				LblOrdine.Text=_Dr["wo_id"].ToString();					
 
@@ -630,33 +582,15 @@ namespace TheSite.ManutenzioneCorrettiva
 			//FABBRICATO
 			if (_Dr["fabbricato"] != DBNull.Value)
 				this.lblfabbricato.Text=_Dr["fabbricato"].ToString();
-//			//Stanza
-//			if (_Dr["stanza"] != DBNull.Value)
-//				this.lblStanza.Text=_Dr["stanza"].ToString();
-
-			if(_Dr["stanza"]!=DBNull.Value)
-				UserStanzeRic1.DescStanza=_Dr["stanza"].ToString();
-
-			if (_Dr["IDS"]!=DBNull.Value)
-				UserStanzeRic1.IdStanza=_Dr["IDS"].ToString();
-			
-			if (_Dr["id_rm_cat"] != DBNull.Value)
-				this.S_macroarea.SelectedValue=_Dr["id_rm_cat"].ToString();	
-
+			//Stanza
+			if (_Dr["stanza"] != DBNull.Value)
+				this.lblStanza.Text=_Dr["stanza"].ToString();
 			//Piano
-//			if (_Dr["piano"] != DBNull.Value)
-//				this.lblPiano.Text=_Dr["piano"].ToString();
-			
-			if (_Dr["id_fl"] != DBNull.Value)
-				this.S_PIANO.SelectedValue=_Dr["id_fl"].ToString();	
-
+			if (_Dr["piano"] != DBNull.Value)
+				this.lblPiano.Text=_Dr["piano"].ToString();
 			//NOTA
 			if (_Dr["nota"] != DBNull.Value)
-				this.lblNote.Text=_Dr["nota"].ToString();
-			//CLASSIFICAZIONE INTERVENTO
-			
-			if (_Dr["tipointervento_id"] != DBNull.Value)
-				this.S_tipintervento.SelectedValue=_Dr["tipointervento_id"].ToString();	
+				this.lblNote.Text=_Dr["nota"].ToString();	
 
 			//Carico i servizi in base all'edificio
 			LoadServizio(_Dr["id_bl"].ToString());
@@ -678,16 +612,10 @@ namespace TheSite.ManutenzioneCorrettiva
 			if (_Dr["descrizione"] != DBNull.Value)
 				this.txtsDescrizione.Text=_Dr["descrizione"].ToString();		
 
-			if (_Dr["DataRdl"] != DBNull.Value)
-			{
-				this.CalendarPicker1.Datazione.Text=DateTime.Parse( _Dr["DataRdl"].ToString()).ToShortDateString();
-				//this.lblDataRichiesta.Text= System.DateTime.Parse(_Dr["dataRichiesta"].ToString()).ToShortDateString();
-				//ORARICHIESTA	
-				
-				System.DateTime cmboradatarichiesta= System.DateTime.Parse(_Dr["DataRdl"].ToString());
-				S_COMBOBOX4.SelectedValue =cmboradatarichiesta.Hour.ToString().PadLeft(2,Convert.ToChar("0"))  ;
-				S_COMBOBOX3.SelectedValue =cmboradatarichiesta.Minute.ToString().PadLeft(2,Convert.ToChar("0")) ;
-			}
+			//			if (_Dr["datainizio"] != DBNull.Value)
+			//				this.CalendarPicker1.Datazione.Text=DateTime.Parse( _Dr["datainizio"].ToString()).ToShortDateString();
+			//			else
+			//				this.CalendarPicker1.Datazione.Text="";
 
 			if (_Dr["datafine"] != DBNull.Value)
 				this.CalendarPicker2.Datazione.Text=DateTime.Parse( _Dr["datafine"].ToString()).ToShortDateString();
@@ -703,13 +631,27 @@ namespace TheSite.ManutenzioneCorrettiva
 			}
 			// Altro
 
-			if (_Dr["date_est_completion"] != DBNull.Value)
-				this.CalendarPicker10.Datazione.Text=DateTime.Parse( _Dr["date_est_completion"].ToString()).ToShortDateString();
-			else
-				this.CalendarPicker10.Datazione.Text="";
+				
+			if (_Dr["sopralluogo_data"]!= DBNull.Value)
+			{
+			
+				this.CalendarPicker5.Datazione.Text=DateTime.Parse( _Dr["sopralluogo_data"].ToString()).ToShortDateString();
+					
+				System.DateTime cmboradatasopralluogo= System.DateTime.Parse(_Dr["sopralluogo_data"].ToString());
+				S_COMBOBOX6.SelectedValue =cmboradatasopralluogo.Hour.ToString().PadLeft(2,Convert.ToChar("0"))  ;
+				S_COMBOBOX5.SelectedValue =cmboradatasopralluogo.Minute.ToString().PadLeft(2,Convert.ToChar("0")) ;
 
+			
+			}
+				
+				//this.CalendarPicker5.Datazione.Text=DateTime.Parse( _Dr["sopralluogo_data"].ToString()).ToShortDateString();
+			else
+				this.CalendarPicker5.Datazione.Text="";
 			// Fine Altro
-			// Paolo
+			
+			if (_Dr["note_sopralluogo"] != DBNull.Value)
+				this.txtSeguito4.Text =_Dr["note_sopralluogo"].ToString();
+
 
 			if (_Dr["datafine"]!=DBNull.Value)
 			{
@@ -724,14 +666,46 @@ namespace TheSite.ManutenzioneCorrettiva
 
 			if (_Dr["tipointervento_id"] != DBNull.Value)
 				cmbsTipoIntrevento.SelectedValue=_Dr["tipointervento_id"].ToString();
-		
+
+			if (_Dr["SGA_IMPORTO_PRESUNTO"] != DBNull.Value && _Dr["SGA_IMPORTO_PRESUNTO"].ToString()!="0")
+			{
+				this.txtImp1.Text=Classi.Function.GetTypeNumber(_Dr["SGA_IMPORTO_PRESUNTO"], TheSite.Classi.NumberType.Intero);  
+				this.txtImp1_1.Text =Classi.Function.GetTypeNumber(_Dr["SGA_IMPORTO_PRESUNTO"], TheSite.Classi.NumberType.Decimale);  
+			}
+			else
+			{
+				this.txtImp1.Text="0";
+				this.txtImp1_1.Text="00";
+			}
+
+			if (_Dr["SGA_IMPORTO_FORFE"] != DBNull.Value && _Dr["SGA_IMPORTO_FORFE"].ToString()!="0")
+			{
+				this.txtImp2.Text=Classi.Function.GetTypeNumber(_Dr["SGA_IMPORTO_FORFE"], TheSite.Classi.NumberType.Intero);  
+				this.txtImp2_1.Text =Classi.Function.GetTypeNumber(_Dr["SGA_IMPORTO_FORFE"], TheSite.Classi.NumberType.Decimale);  
+			}
+			else
+			{
+				this.txtImp2.Text="0";
+				this.txtImp2_1.Text="00";
+			}
+
+			
 			if (_Dr["SGA"] != DBNull.Value)
 				this.HSga.Value =_Dr["SGA"].ToString();
 			
 			if (_Dr["SGA"] != DBNull.Value)
 				this.lblSGA.Text =_Dr["SGA"].ToString();
 
-			LoadDataInvioSGA();		
+			LoadDataInvioSGA();
+
+			if (_Dr["SGA_PRESUNTO_IVA"] != DBNull.Value)
+				this.txtPercentuale1.Text =_Dr["SGA_PRESUNTO_IVA"].ToString();
+
+			if (_Dr["SGA_FORFE_IVA"] != DBNull.Value)
+				this.txtPercentuale2.Text =_Dr["SGA_FORFE_IVA"].ToString();
+
+			if (_Dr["SGA_MODALITA_PAGAMENTO"] != DBNull.Value)
+				this.txtModalitaPagamento.Text =_Dr["SGA_MODALITA_PAGAMENTO"].ToString();
 
 			if (_Dr["SGA_NOTE"] != DBNull.Value)
 				this.txtNoteSga.Text =_Dr["SGA_NOTE"].ToString();
@@ -745,16 +719,20 @@ namespace TheSite.ManutenzioneCorrettiva
 			if (_Dr["sga_effetto"] != DBNull.Value)
 				this.txtEffettoGuasto.Text =_Dr["sga_effetto"].ToString();
 
-			//AGGIUNTA---
-			//LoadAddettiDitta1(int.Parse(_Dr["servizio_id"].ToString()));
-			LoadAddettiDitta(_Dr["bl_id"].ToString(), int.Parse(_Dr["servizio_id"].ToString()));
-			
+
+			//Ditta Esecutrice (Controllo se ho nella WR il campo ditta valorizzato)				
+			if (_Dr["ditta_id"] != DBNull.Value)
+			{
+				this.cmbsDitta.SelectedValue=_Dr["ditta_id"].ToString();
+				LoadAddettiDitta(_Dr["bl_id"].ToString(),int.Parse(this.cmbsDitta.SelectedValue), int.Parse(_Dr["servizio_id"].ToString()));
+			}
+			//			else
+			//				LoadAddettiDitta("",1);
+
+			//LoadAddettiDitta("-1",0);
 			//Addetto
 			if (_Dr["addetto_id"] != DBNull.Value)
 				this.cmbsAddetto.SelectedValue=_Dr["addetto_id"].ToString();	
-				
-			
-			
 			//Fine Caricamento Dati Richiesta
 			
 			//			if(_Dr["presidio"]!= DBNull.Value)
@@ -809,33 +787,16 @@ namespace TheSite.ManutenzioneCorrettiva
 				LblMessaggio.Text="Stato della Richiesta di Lavoro : " + descrizionestato + " in data: " + _DrStato["data"]  ;
 			}
 
-			//SOPRALLUOGO
-			if (_Dr["datasopralluogo"] != DBNull.Value)
-				CalendarPicker4.Datazione.Text= System.DateTime.Parse(_Dr["datasopralluogo"].ToString()).ToShortDateString();
+			//DATAPIANIFICATA
+			if (_Dr["datapianificata"] != DBNull.Value)
+				CalendarPicker6.Datazione.Text= System.DateTime.Parse(_Dr["datapianificata"].ToString()).ToShortDateString();
 			
-			//ORARIO SOPRALLUOGO
+			//ORARIO PIANIFICATO
 			string minuti="00";
 			string ora="00";
-			if (_Dr["datasopralluogo"] != DBNull.Value)
+			if (_Dr["datapianificata"] != DBNull.Value)
 			{
-				System.DateTime orasop= System.DateTime.Parse(_Dr["datasopralluogo"].ToString());
-				ora=orasop.Hour.ToString();
-				minuti=orasop.Minute.ToString();
-				OraSopralluogo.SelectedValue=ora.PadLeft(2,Convert.ToChar("0"));
-				MinutiSopralluogo.SelectedValue=minuti.PadLeft(2,Convert.ToChar("0"));
-					
-			}
-
-			//DATASTART
-			if (_Dr["date_est_start"] != DBNull.Value)
-				CalendarPicker6.Datazione.Text= System.DateTime.Parse(_Dr["date_est_start"].ToString()).ToShortDateString();
-			
-			//ORARIO DATASTART
-			minuti="00";
-			ora="00";
-			if (_Dr["date_est_start"] != DBNull.Value)
-			{
-				System.DateTime orarich= System.DateTime.Parse(_Dr["date_est_start"].ToString());
+				System.DateTime orarich= System.DateTime.Parse(_Dr["datapianificata"].ToString());
 				ora=orarich.Hour.ToString();
 				minuti=orarich.Minute.ToString();
 				cmbOra1.SelectedValue=ora.PadLeft(2,Convert.ToChar("0"));
@@ -856,6 +817,9 @@ namespace TheSite.ManutenzioneCorrettiva
 				this.cmbsTipoIntrevento.AutoPostBack=true;
 				cmbsstatolavoro.SelectedValue= _Dr["idstatus"].ToString();
 
+				if(_Dr["nr_consuntivo"] != DBNull.Value)
+					this.txtnrconsuntivo.Text=_Dr["nr_consuntivo"].ToString();
+				
 				if (_Dr["cost_total"] != DBNull.Value)
 				{
 					this.ImpCons1.Text=Classi.Function.GetTypeNumber(_Dr["cost_total"], TheSite.Classi.NumberType.Intero);  
@@ -877,78 +841,25 @@ namespace TheSite.ManutenzioneCorrettiva
 					LkCons.Visible=false;
 				}
 				
-				BindCdC(int.Parse(_Dr["servizio_id"].ToString()));
-				
-				if (_Dr["contabilizzazione"] != DBNull.Value && 
-					_Dr["contabilizzazione"].ToString()!="0"
-					)					
+				if (_Dr["contabilizzazione"] != DBNull.Value)
+					//Bind cdc
+					
+					BindCdC(int.Parse(_Dr["servizio_id"].ToString()));
 					cmbCdC.SelectedValue=_Dr["contabilizzazione"].ToString();
-				
-				if (_Dr["nrord"] != DBNull.Value)					
-					txtord.Text=_Dr["nrord"].ToString();
-				
 
 				//nota Sospesa
 				if (_Dr["notesospesa"] != DBNull.Value)
 					txtsAnnotazioni.Text = _Dr["notesospesa"].ToString();
-				//note consuntivo
-				if (_Dr["forfait_note"] != DBNull.Value)
-					TxtAForfait.Text = _Dr["forfait_note"].ToString();
-				
-								if (_Dr["forfait"] != DBNull.Value)
-								{
-									OptAForfait.Checked = (_Dr["forfait"].ToString()=="0")?false:true;
-//									if (_Dr["forfait"].ToString()=="0")
-//										TxtAForfait.Enabled=false;
-//									else
-//										TxtAForfait.Enabled=true;
-								}
-								else
-								{
-									OptAMisura.Checked=true; 
+
 								
-								}		
 	
-				if (_Dr["date_start"]!=DBNull.Value)
-					CalendarPicker7.Datazione.Text= System.DateTime.Parse(_Dr["date_start"].ToString()).ToShortDateString();
-
-				if (_Dr["date_end"]!=DBNull.Value)
-					CalendarPicker8.Datazione.Text= System.DateTime.Parse(_Dr["date_end"].ToString()).ToShortDateString();
-
-				if (_Dr["date_start"]!=DBNull.Value)
-				{
-					System.DateTime OraIniz= System.DateTime.Parse(_Dr["date_start"].ToString());
-					OraIni.SelectedValue =OraIniz.Hour.ToString().PadLeft(2,Convert.ToChar("0"))  ;
-					MinitiIni.SelectedValue =OraIniz.Minute.ToString().PadLeft(2,Convert.ToChar("0")) ;
-				}
-				if (_Dr["date_end"]!=DBNull.Value)
-				{
-					System.DateTime OraFinez= System.DateTime.Parse(_Dr["date_end"].ToString());      
-					OraFine.SelectedValue =OraFinez.Hour.ToString().PadLeft(2,Convert.ToChar("0")) ;
-					MinutiFine.SelectedValue =OraFinez.Minute.ToString().PadLeft(2,Convert.ToChar("0"));
-				}
-
-				// Paolo   da rivedere il campo della query che seleziona il dato per questo picker
-				if (_Dr["date_est_completion"]!=DBNull.Value)
-					CalendarPicker10.Datazione.Text= System.DateTime.Parse(_Dr["date_est_completion"].ToString()).ToShortDateString();
-
-				if (_Dr["date_est_completion"]!=DBNull.Value)
-				{
-					System.DateTime OraInizi= System.DateTime.Parse(_Dr["date_est_completion"].ToString());
-					S_COMBOBOX2.SelectedValue =OraInizi.Hour.ToString().PadLeft(2,Convert.ToChar("0"))  ;
-					S_COMBOBOX1.SelectedValue =OraInizi.Minute.ToString().PadLeft(2,Convert.ToChar("0")) ;
-				}
-				// Paolo
-
-
 				if (_Dr["comments"] != DBNull.Value)
 					cmbDescrizioneIntervento.Text = _Dr["comments"].ToString();
 
 				if (_Dr["AC_ID"]!= DBNull.Value)
 					txtBuonoLavoroEster.Text = _Dr["AC_ID"].ToString();
 
-				if (_Dr["DISSERVIZIO"]!= DBNull.Value)
-					CkDisser.Checked =( int.Parse(_Dr["DISSERVIZIO"].ToString())==1)?true:false;
+				
 
 				if (_Dr["DIE_TIPO_INTERVENTO"]!= DBNull.Value)
 					cmbStatoIntervento.SelectedValue = _Dr["DIE_TIPO_INTERVENTO"].ToString();
@@ -956,37 +867,37 @@ namespace TheSite.ManutenzioneCorrettiva
 				
 				#region commento
 
-								if (_Dr["DIE_COSTO_MATERIALE"]!= DBNull.Value)
-								{
-									txtCostiMateriali1.Text =Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_MATERIALE"], TheSite.Classi.NumberType.Intero);  
-									txtCostiMateriali2.Text=Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_MATERIALE"], TheSite.Classi.NumberType.Decimale);  
-								}
-								else
-								{
-									this.txtCostiMateriali1.Text="0";
-									this.txtCostiMateriali2.Text="00";
-								}
-								if (_Dr["DIE_COSTO_PERSONALE"]!= DBNull.Value)
-								{
-									txtCostiPersonale1.Text =Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_PERSONALE"], TheSite.Classi.NumberType.Intero);  
-									txtCostiPersonale2.Text=Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_PERSONALE"], TheSite.Classi.NumberType.Decimale);  
-								}
-								else
-								{
-									this.txtCostiPersonale1.Text="0";
-									this.txtCostiPersonale2.Text="00";
-								}
-				
-								if (_Dr["DIE_COSTO_TOTALE"]!= DBNull.Value)
-								{
-									txtCostiTotale1.Text =Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_TOTALE"], TheSite.Classi.NumberType.Intero);  
-									txtCostiTotale2.Text=Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_TOTALE"], TheSite.Classi.NumberType.Decimale);  
-								}
-								else
-								{
-									this.txtCostiTotale1.Text="0";
-									this.txtCostiTotale2.Text="00";
-								}
+//								if (_Dr["DIE_COSTO_MATERIALE"]!= DBNull.Value)
+//								{
+//									txtCostiMateriali1.Text =Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_MATERIALE"], TheSite.Classi.NumberType.Intero);  
+//									txtCostiMateriali2.Text=Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_MATERIALE"], TheSite.Classi.NumberType.Decimale);  
+//								}
+//								else
+//								{
+//									this.txtCostiMateriali1.Text="0";
+//									this.txtCostiMateriali2.Text="00";
+//								}
+//								if (_Dr["DIE_COSTO_PERSONALE"]!= DBNull.Value)
+//								{
+//									txtCostiPersonale1.Text =Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_PERSONALE"], TheSite.Classi.NumberType.Intero);  
+//									txtCostiPersonale2.Text=Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_PERSONALE"], TheSite.Classi.NumberType.Decimale);  
+//								}
+//								else
+//								{
+//									this.txtCostiPersonale1.Text="0";
+//									this.txtCostiPersonale2.Text="00";
+//								}
+//				
+//								if (_Dr["DIE_COSTO_TOTALE"]!= DBNull.Value)
+//								{
+//									txtCostiTotale1.Text =Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_TOTALE"], TheSite.Classi.NumberType.Intero);  
+//									txtCostiTotale2.Text=Classi.Function.GetTypeNumber(_Dr["DIE_COSTO_TOTALE"], TheSite.Classi.NumberType.Decimale);  
+//								}
+//								else
+//								{
+//									this.txtCostiTotale1.Text="0";
+//									this.txtCostiTotale2.Text="00";
+//								}
 				#endregion
 				if (_Dr["DIE_NOTE"]!= DBNull.Value)
 					txtNoteCompletamento.Text=_Dr["DIE_NOTE"].ToString();		
@@ -1011,64 +922,25 @@ namespace TheSite.ManutenzioneCorrettiva
 			rpdc.Visible =true;
 			rpdc.DataSource =_MyDs.Tables[0];
 			rpdc.DataBind();
-
-		
-
-
 		}
 
-		
-		private void LoadSolleciti()
+		private void LoadHLAV()
 		{
-		
-			Classi.ManOrdinaria.Solleciti _Solleciti = new Classi.ManOrdinaria.Solleciti();
-			DataSet _MyDs1 =  _Solleciti.GetDataWR(this.wr_id.ToString());
-			if(_MyDs1.Tables[0].Rows.Count==0)
+			TheSite.Classi.ManCorrettiva.ClManCorrettiva mancorr= new  TheSite.Classi.ManCorrettiva.ClManCorrettiva(Context.User.Identity.Name);
+			DataSet _MyDs = mancorr.GetRDLHlavorate(this.wr_id);
+			if(_MyDs.Tables[0].Rows.Count==0)
 			{
 				Repeater1.Visible =false;
 				return;
 			}
 			Repeater1.Visible =true;
-			Repeater1.DataSource =_MyDs1.Tables[0];
+			Repeater1.DataSource =_MyDs.Tables[0];
 			Repeater1.DataBind();
-		
+
+		 lblhlav.Text= mancorr.GetRDLHTOTlavorate(this.wr_id);		
+
 		}
 
-		private void LoadReclami()
-		{
-		
-			Classi.ManOrdinaria.Reclamo _Reclamo = new Classi.ManOrdinaria.Reclamo();
-			DataSet _MyDs2 =  _Reclamo.GetDataWR(this.wr_id.ToString());
-			if(_MyDs2.Tables[0].Rows.Count==0)
-			{
-				Repeater2.Visible =false;
-				return;
-			}
-			Repeater2.Visible =true;
-			Repeater2.DataSource =_MyDs2.Tables[0];
-			Repeater2.DataBind();
-		
-		}
-
-		private void LoadChiarInfo()
-		{
-		
-			Classi.ManOrdinaria.ChiariInfo _ChiariInfo = new Classi.ManOrdinaria.ChiariInfo();
-			DataSet _MyDs3 =  _ChiariInfo.GetDataWR(this.wr_id.ToString());
-			if(_MyDs3.Tables[0].Rows.Count==0)
-			{
-				Repeater3.Visible =false;
-				return;
-			}
-			Repeater3.Visible =true;
-			Repeater3.DataSource =_MyDs3.Tables[0];
-			Repeater3.DataBind();
-		
-		}
-
-
-
-		
 		private void LoadDataInvioSGA()
 		{
 			//recupero data di invio sga
@@ -1163,50 +1035,6 @@ namespace TheSite.ManutenzioneCorrettiva
 				this.cmbsTipoIntrevento.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, String.Empty));
 			}
 		}
-
-		private void LoadPiani()
-		{
-			S_PIANO.Items.Clear();
-
-			DataSet _MyDs;
-			_MyDs = _ClManCorrettiva.GetPiani();
-			if (_MyDs.Tables[0].Rows.Count > 0)
-			{
-				this.S_PIANO.DataSource =_MyDs.Tables[0];
-				this.S_PIANO.DataTextField = "descrizione";
-				this.S_PIANO.DataValueField = "id";
-				this.S_PIANO.DataBind();
-			}
-			else
-			{
-				string s_Messagggio = "- Nessun Piano -";
-				this.S_PIANO.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, String.Empty));
-			}
-		}
-
-		
-		private void LoadPianibl(string id_bl)
-		{
-			S_PIANO.Items.Clear();
-
-			DataSet _MyDs;
-			_MyDs = _ClManCorrettiva.GetPianibl(id_bl);
-			if (_MyDs.Tables[0].Rows.Count > 0)
-			{
-				this.S_PIANO.DataSource =_MyDs.Tables[0];
-				this.S_PIANO.DataTextField = "descrizione";
-				this.S_PIANO.DataValueField = "id";
-				this.S_PIANO.DataBind();
-			}
-			else
-			{
-				string s_Messagggio = "- Nessun Piano -";
-				this.S_PIANO.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, String.Empty));
-			}
-		}
-
-		
-
 		/// <summary>
 		/// Carica i Servizi di un detereminato edificio
 		/// </summary>
@@ -1234,9 +1062,9 @@ namespace TheSite.ManutenzioneCorrettiva
 
 			if (_MyDs.Tables[0].Rows.Count > 0)
 			{
-//				this.cmbsServizio.DataSource = Classi.GestoreDropDownList.ItemBlankDataSource(
-//					_MyDs.Tables[0], "DESCRIZIONE", "IDSERVIZIO", "Non Definito", "");
-				this.cmbsServizio.DataSource =_MyDs.Tables[0];
+				//this.cmbsServizio.DataSource = Classi.GestoreDropDownList.ItemBlankDataSource(
+				//	_MyDs.Tables[0], "DESCRIZIONE", "IDSERVIZIO", "Non Definito", "");
+				this.cmbsServizio.DataSource = _MyDs.Tables[0];
 				this.cmbsServizio.DataTextField = "DESCRIZIONE";
 				this.cmbsServizio.DataValueField = "IDSERVIZIO";
 				this.cmbsServizio.DataBind();
@@ -1253,14 +1081,14 @@ namespace TheSite.ManutenzioneCorrettiva
 		private void LoadStandardApparechiature()
 		{
 			
-//			if (this.cmbsServizio.SelectedIndex==0)
-//			{
-//				cmdsStdApparecchiatura.Items.Clear();
-//				string s_Messagggio = "- Nessuno Standard -";
-//				this.cmdsStdApparecchiatura.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, String.Empty));
-//			}
-//			else
-//			{
+			if (this.cmbsServizio.SelectedIndex==0)
+			{
+				cmdsStdApparecchiatura.Items.Clear();
+				string s_Messagggio = "- Nessuno Standard -";
+				this.cmdsStdApparecchiatura.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, String.Empty));
+			}
+			else
+			{
 				this.cmdsStdApparecchiatura.Items.Clear();
 			
 				DataSet _MyDs;
@@ -1301,21 +1129,21 @@ namespace TheSite.ManutenzioneCorrettiva
 					string s_Messagggio = "- Nessuno Standard -";
 					this.cmdsStdApparecchiatura.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, String.Empty));
 				}
-			//}
+			}
 		}
 		/// <summary>
 		/// Carico le apparechiature
 		/// </summary>
 		private void LoadApparechiature()
 		{
-//			if (this.cmbsServizio.SelectedIndex==0)
-//			{
-//				cmbEQ.Items.Clear();
-//				string s_Messagggio = "- Nessuna Apparecchiatura -";
-//				this.cmbEQ.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, String.Empty));
-//			}
-//			else
-//			{
+			if (this.cmbsServizio.SelectedIndex==0)
+			{
+				cmbEQ.Items.Clear();
+				string s_Messagggio = "- Nessuna Apparecchiatura -";
+				this.cmbEQ.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, String.Empty));
+			}
+			else
+			{
 				///Istanzio un nuovo oggetto Collection per aggiungere i parametri
 				S_Controls.Collections.S_ControlsCollection _SCollection = new S_Controls.Collections.S_ControlsCollection();
 				///creo i parametri
@@ -1326,7 +1154,7 @@ namespace TheSite.ManutenzioneCorrettiva
 				s_p_Bl_Id.Direction = ParameterDirection.Input;
 				s_p_Bl_Id.Size =50;
 				s_p_Bl_Id.Index = _SCollection.Count;
-				s_p_Bl_Id.Value = "";
+				s_p_Bl_Id.Value = txtHidBl.Text;
 				_SCollection.Add(s_p_Bl_Id);
 
 				//				S_Controls.Collections.S_Object s_p_campus = new S_Controls.Collections.S_Object();
@@ -1394,10 +1222,44 @@ namespace TheSite.ManutenzioneCorrettiva
 					string s_Messagggio = "- Nessuna Apparecchiatura -";
 					this.cmbEQ.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, String.Empty));
 				}	
-			//}
+			}
 		}
 	
+		/// <summary>
+		/// Carica le ditte addette alla manutenzione per un edificio
+		/// </summary>
+		/// <param name="idbl"></param>
+		private void LoadDitte(int bl_id, int id_servizio)
+		{	
+			cmbsDitta.Items.Clear();			
+			// Attraverso l'IDBL mi ricavo l'ID della Ditta
+			int idditta=0;
 		
+			DataSet _MyDsDittaBl;
+			_MyDsDittaBl=_ClManCorrettiva.GetDittaMasterBl(bl_id);			
+			DataRow _DrBl = _MyDsDittaBl.Tables[0].Rows[0];
+			idditta= Int32.Parse(_DrBl["id_ditta"].ToString());			
+			
+			DataSet _MyDs = _ClManCorrettiva.GetDitteFornitoriRuoli(idditta);
+
+			if (_MyDs.Tables[0].Rows.Count > 0)
+			{
+				this.cmbsDitta.DataSource=_MyDs.Tables[0];
+				this.cmbsDitta.DataTextField = "DESCRIZIONE";
+				this.cmbsDitta.DataValueField = "id";
+				this.cmbsDitta.DataBind();
+				//				this.cmbsDitta.SelectedValue="1";
+				LoadAddettiDitta("",Convert.ToInt32(cmbsDitta.SelectedValue),id_servizio);
+			}
+			
+			else
+			{
+				string s_Messagggio = "- Nessuna Ditta  -";
+				this.cmbsDitta.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, "0"));
+			}
+		}
+		/// <summary>
+		/// Carico la lista del livello di urgenza dell'intervento
 		/// </summary>
 		private void LoadUrgenze(string Codice)
 		{
@@ -1425,15 +1287,15 @@ namespace TheSite.ManutenzioneCorrettiva
 		/// </summary>
 		/// <param name="bl_id"></param>
 		/// <param name="ditta_id"></param>
-		private void LoadAddettiDitta(string bl_id, int servizi_id)
+		private void LoadAddettiDitta(string bl_id,int ditta_id, int servizi_id)
 		{	
 			this.cmbsAddetto.Items.Clear();				
 			
 
 			DataSet _MyDs;
 
-			//_MyDs = _ClManCorrettiva.GetAddetti("",bl_id,ditta_id,servizi_id);
-			_MyDs = _ClManCorrettiva.GetAddetti_data("",bl_id,servizi_id,wr_id);
+			_MyDs = _ClManCorrettiva.GetAddetti("",bl_id,ditta_id,servizi_id);
+			
 
 			if (_MyDs.Tables[0].Rows.Count > 0)
 			{
@@ -1447,13 +1309,9 @@ namespace TheSite.ManutenzioneCorrettiva
 			{
 				string s_Messagggio = "- Nessun Addetto  -";
 				this.cmbsAddetto.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, "0"));
-			}		
-		}
+			}
 		
-
-
-
-
+		}
 		#region Codice generato da Progettazione Web Form
 		override protected void OnInit(EventArgs e)
 		{
@@ -1470,26 +1328,28 @@ namespace TheSite.ManutenzioneCorrettiva
 		/// </summary>
 		private void InitializeComponent()
 		{    
+			this.cmbsServizio.SelectedIndexChanged += new System.EventHandler(this.cmbsServizio_SelectedIndexChanged);
+			this.cmdsStdApparecchiatura.SelectedIndexChanged += new System.EventHandler(this.cmdsStdApparecchiatura_SelectedIndexChanged);
 			this.BtUpload.Click += new System.EventHandler(this.BtUpload_Click);
 			this.rpdc.ItemDataBound += new System.Web.UI.WebControls.RepeaterItemEventHandler(this.rpdc_ItemDataBound);
 			this.rpdc.ItemCommand += new System.Web.UI.WebControls.RepeaterCommandEventHandler(this.rpdc_ItemCommand);
-			this.Repeater1.ItemDataBound += new System.Web.UI.WebControls.RepeaterItemEventHandler(this.Repeater1_ItemDataBound);
-			this.Repeater2.ItemDataBound += new System.Web.UI.WebControls.RepeaterItemEventHandler(this.Repeater2_ItemDataBound);
-			this.Repeater3.ItemDataBound += new System.Web.UI.WebControls.RepeaterItemEventHandler(this.Repeater3_ItemDataBound);
 			this.BtInviaPreventivo.Click += new System.EventHandler(this.BtInviaPreventivo_Click);
 			this.btImgDelete.Click += new System.Web.UI.ImageClickEventHandler(this.btImgDelete_Click);
 			this.BtSalvaSGA.Click += new System.EventHandler(this.BtSalvaSGA_Click);
-			this.Button1.Click += new System.EventHandler(this.Button1_Click);
+			this.Button2.Click += new System.EventHandler(this.Button2_Click);
 			this.btRifiuta.Click += new System.EventHandler(this.btRifiuta_Click);
 			this.btSospendi.Click += new System.EventHandler(this.btSospendi_Click);
 			this.btApprova.Click += new System.EventHandler(this.btApprova_Click);
 			this.BtInviaCons.Click += new System.EventHandler(this.BtInviaCons_Click);
 			this.btImgDeleteCons.Click += new System.Web.UI.ImageClickEventHandler(this.btImgDeleteCons_Click);
+			this.btn_S_Hlav.Click += new System.EventHandler(this.btn_S_Hlav_Click);
+			this.Repeater1.ItemDataBound += new System.Web.UI.WebControls.RepeaterItemEventHandler(this.Repeater1_ItemDataBound);
+			this.Repeater1.ItemCommand += new System.Web.UI.WebControls.RepeaterCommandEventHandler(this.Repeater1_ItemCommand);
 			this.BtSalva.Click += new System.EventHandler(this.BtSalva_Click);
 			this.BtDIE.Click += new System.EventHandler(this.BtDIE_Click);
 			this.btFoglioPdf.Click += new System.EventHandler(this.btFoglioPdf_Click);
 			this.btChiudi.Click += new System.EventHandler(this.btChiudi_Click);
-			this.btFoglio.Click += new System.EventHandler(this.btFoglio_Click);
+			this.Button3.Click += new System.EventHandler(this.Button3_Click);
 			this.Load += new System.EventHandler(this.Page_Load);
 
 		}
@@ -1525,10 +1385,11 @@ namespace TheSite.ManutenzioneCorrettiva
 		}
 
 	
-		private S_ControlsCollection GetSgaParameter()
+	
+		private int SaveSGA()
 		{
 			S_ControlsCollection _SColl = new S_ControlsCollection();
-		
+			
 			S_Controls.Collections.S_Object p = new S_Object();
 			p.ParameterName = "p_wr_id";
 			p.DbType = CustomDBType.Integer;
@@ -1536,8 +1397,7 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Index = _SColl.Count;
 			p.Value = this.wr_id;
 			_SColl.Add(p);
-
-			
+	
 			p = new S_Object();
 			p.ParameterName = "p_servizio";
 			p.DbType = CustomDBType.Integer;
@@ -1551,7 +1411,7 @@ namespace TheSite.ManutenzioneCorrettiva
 
 			
 			p = new S_Object();
-			p.ParameterName = "p_stdapparecchiatura";
+			p.ParameterName = "p_stdapparechhiatura";
 			p.DbType = CustomDBType.Integer;
 			p.Direction = ParameterDirection.Input;
 			p.Index = _SColl.Count;
@@ -1573,52 +1433,6 @@ namespace TheSite.ManutenzioneCorrettiva
 			_SColl.Add(p);
 
 			p = new S_Object();
-			p.ParameterName = "p_datarichiesta";
-			p.DbType = CustomDBType.Date;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-	
-			string data_startrich =string.Empty; 
-			data_startrich=CalendarPicker1.Datazione.Text;
-			if(data_startrich!="")
-			{ 
-				string ora_iniziorich=((S_COMBOBOX4.SelectedValue=="")?"00":S_COMBOBOX4.SelectedValue) + ":" + ((S_COMBOBOX3.SelectedValue=="")?"00":S_COMBOBOX3.SelectedValue) + ":00";
-				data_startrich += " " + ora_iniziorich;  
-			}
-			if(data_startrich!="")
-				p.Value =data_startrich;
-			else
-				p.Value =DBNull.Value;
-			
-			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "p_id_fl";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value = int.Parse(S_PIANO.SelectedValue); 
-			_SColl.Add(p);
-			
-			p = new S_Object();
-			p.ParameterName = "p_id_rm";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value =(UserStanzeRic1.IdStanza=="")?0:int.Parse(UserStanzeRic1.IdStanza);
-			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "p_id_rm_cat";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value = 
-				(S_macroarea.SelectedValue=="")?29:int.Parse(S_macroarea.SelectedValue);
-			
-			_SColl.Add(p);
-
-			p = new S_Object();
 			p.ParameterName = "p_descrizione";
 			p.DbType = CustomDBType.VarChar;
 			p.Direction = ParameterDirection.Input;
@@ -1654,42 +1468,36 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Value =txtSoluzioneProposta.Text;
 			_SColl.Add(p);
 
-			// DATASOPRALLUOGO
-			p = new S_Object();
-			p.ParameterName = "p_datasopralluogo";
-			p.DbType = CustomDBType.VarChar;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;			
-			p.Size=30;
 
-			//Data Sopralluogo	
-			string data_sopralluogo=CalendarPicker4.Datazione.Text;
-			if(data_sopralluogo!="")
-			{ 
-				string ora_sopralluogo= ((OraSopralluogo.SelectedValue=="")?"00":OraSopralluogo.SelectedValue) + ":" + ((MinutiSopralluogo.SelectedValue=="")?"00":MinutiSopralluogo.SelectedValue) + ":00";
-				data_sopralluogo = data_sopralluogo + " " + ora_sopralluogo;  
-			}
-			p.Value = data_sopralluogo;
-			_SColl.Add(p);
-
-			// DATAINIZIO
 			p = new S_Object();
 			p.ParameterName = "p_datainizio";
 			p.DbType = CustomDBType.Date;
 			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;			
-			p.Size=30;
+			p.Index = _SColl.Count;
+			//			if (CalendarPicker6.Datazione.Text=="")  
+			//				p.Value =DBNull.Value;
+			//			else
+			//				p.Value =DateTime.Parse(CalendarPicker6.Datazione.Text); 
 
-			//Data Inizio
-			string data_inizio=CalendarPicker6.Datazione.Text;
-			if(data_inizio!="")
-			{ 
-				string ora_inizio= ((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
-				data_inizio = data_inizio + " " + ora_inizio;  
+			
+			if (CalendarPicker6.Datazione.Text=="")  
+				p.Value =DBNull.Value;
+			else
+			{
+				string data_start1 =string.Empty; 
+				data_start1=CalendarPicker6.Datazione.Text;
+				if(data_start1!="")
+				{ 
+					string ora_inizio=((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
+					data_start1 += " " + ora_inizio;  
+				}
+				if(data_start1!="")
+					p.Value =data_start1;
+				else
+					p.Value =DBNull.Value;
 			}
-			p.Value = data_inizio;
+			
 			_SColl.Add(p);
-
 
 			p = new S_Object();
 			p.ParameterName = "p_datefine";
@@ -1725,7 +1533,16 @@ namespace TheSite.ManutenzioneCorrettiva
 			_SColl.Add(p);
 
 			
-		
+			if(cmbsTipoManutenzione.SelectedValue!="3")//diversa da straordinaria
+			{
+				txtImp1.Text="";
+				txtImp1_1.Text="";
+				txtImp2.Text="";
+				txtImp2_1.Text=""; 
+				txtPercentuale1.Text="";
+				txtPercentuale2.Text="";
+				
+			}
 			p = new S_Object();
 			p.ParameterName = "p_tipointervento";
 			p.DbType = CustomDBType.Integer;
@@ -1734,18 +1551,7 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Value =int.Parse(cmbsTipoIntrevento.SelectedValue);  
 			_SColl.Add(p);
 
-			
-
-
-
-//			p = new S_Object();
-//			p.ParameterName = "p_modalita";
-//			p.DbType = CustomDBType.VarChar;
-//			p.Direction = ParameterDirection.Input;
-//			p.Index = _SColl.Count;
-//			p.Size=112;
-//			p.Value =txtModalitaPagamento.Text; 
-//			_SColl.Add(p);
+	
 
 			p = new S_Object();
 			p.ParameterName = "p_note";
@@ -1755,158 +1561,140 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Size=408;
 			p.Value =txtNoteSga.Text; 
 			_SColl.Add(p);
-
-
-			return _SColl;
-		}
-
-		private S_ControlsCollection GetSgaParameterCompletamentotestata()
-		{
-			S_ControlsCollection _SColl = new S_ControlsCollection();
-		
-			S_Controls.Collections.S_Object p = new S_Object();
-			p.ParameterName = "p_wr_id";
+			
+			// URGENZA
+			p = new S_Object();
+			p.ParameterName = "p_urgenza";
 			p.DbType = CustomDBType.Integer;
 			p.Direction = ParameterDirection.Input;
 			p.Index = _SColl.Count;
-			p.Value = this.wr_id;
-			_SColl.Add(p);
-				
-
-			p = new S_Object();
-			p.ParameterName = "p_descrizione";
-			p.DbType = CustomDBType.VarChar;
-			p.Direction = ParameterDirection.Input;
-			p.Size =4000;
-			p.Index = _SColl.Count;
-			p.Value =txtsDescrizione.Text;
+			p.Value = cmbsUrgenza.SelectedValue; //Int32.Parse(cmbsUrgenza.SelectedValue.Split(Convert.ToChar(","))[0]);	
 			_SColl.Add(p);
 
 			p = new S_Object();
-			p.ParameterName = "p_anomalia";
-			p.DbType = CustomDBType.VarChar;
+			p.ParameterName = "p_addetto_id";
+			p.DbType = CustomDBType.Integer;
 			p.Direction = ParameterDirection.Input;
-			p.Size =408;
 			p.Index = _SColl.Count;
-			p.Value =txtCausa.Text;
-			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "p_effetto";
-			p.DbType = CustomDBType.VarChar;
-			p.Direction = ParameterDirection.Input;
-			p.Size =408;
-			p.Index = _SColl.Count;
-			p.Value =txtEffettoGuasto.Text;
-			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "p_soluzione";
-			p.DbType = CustomDBType.VarChar;
-			p.Direction = ParameterDirection.Input;
-			p.Size =408;
-			p.Index = _SColl.Count;
-			p.Value =txtSoluzioneProposta.Text;
+			if(cmbsAddetto.SelectedValue=="0")
+				p.Value = DBNull.Value;
+			else
+				p.Value =int.Parse(cmbsAddetto.SelectedValue);
 			_SColl.Add(p);
 			
-			// DATASOPRALLUOGO
+			
+			// DATAPIANIFICATA
 			p = new S_Object();
-			p.ParameterName = "p_datasopralluogo";
+			p.ParameterName = "p_datapianificata";
 			p.DbType = CustomDBType.VarChar;
 			p.Direction = ParameterDirection.Input;
 			p.Index = _SColl.Count;			
 			p.Size=30;
 
-			//Data Sopralluogo	
-			string data_sopralluogo=CalendarPicker4.Datazione.Text;
-			if(data_sopralluogo!="")
+			//Data Pianificata	
+			string data_pianificata="";
+			string data_p=CalendarPicker6.Datazione.Text;
+			if(data_p!="")
 			{ 
-				string ora_sopralluogo= ((OraSopralluogo.SelectedValue=="")?"00":OraSopralluogo.SelectedValue) + ":" + ((MinutiSopralluogo.SelectedValue=="")?"00":MinutiSopralluogo.SelectedValue) + ":00";
-				data_sopralluogo = data_sopralluogo + " " + ora_sopralluogo;  
+				string ora_p= ((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
+				data_pianificata = data_p + " " + ora_p;  
+			}
+			p.Value = data_pianificata;
+			_SColl.Add(p);
+
+			// ID_DITTA
+			p = new S_Object();
+			p.ParameterName = "p_id_ditta";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value = (cmbsDitta.SelectedValue=="")?0:int.Parse(cmbsDitta.SelectedValue);
+			_SColl.Add(p);
+		
+			
+			// NR PREVENTIVO
+			p = new S_Object();
+			p.ParameterName = "p_numeropreventivo";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Size=20;
+			p.Value =TxtNumPreventivo.Text;
+			_SColl.Add(p);
+
+			//IMPORTO PREVENTIVO
+			p = new S_Object();
+			p.ParameterName = "p_importopreventivo";
+			p.DbType = CustomDBType.Double;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			if(txtImpPrev1.Text=="") 
+				p.Value =0;
+			else
+				p.Value =double.Parse(txtImpPrev1.Text + "," + txtImpPrev2.Text);  
+			_SColl.Add(p);
+			
+
+			
+			// DATA SOPRALLUOGO 1
+			p = new S_Object();
+			p.ParameterName = "p_datapsopralluogo";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;			
+			p.Size=30;
+						
+			string data_sopralluogo="";
+			string data_s=CalendarPicker5.Datazione.Text;
+			if(data_s!="")
+			{ 
+				string ora_s= ((S_COMBOBOX6.SelectedValue=="")?"00":S_COMBOBOX6.SelectedValue) + ":" + ((S_COMBOBOX5.SelectedValue=="")?"00":S_COMBOBOX5.SelectedValue) + ":00";
+				data_sopralluogo = data_s + " " + ora_s;  
 			}
 			p.Value = data_sopralluogo;
 			_SColl.Add(p);
 
+			// NOTE SOPRALLUOGO
 
 			p = new S_Object();
-			p.ParameterName = "p_datainizio";
-			p.DbType = CustomDBType.Date;
+			p.ParameterName = "p_note_sopralluogo";
+			p.DbType = CustomDBType.VarChar;
 			p.Direction = ParameterDirection.Input;
 			p.Index = _SColl.Count;
-			if (CalendarPicker6.Datazione.Text=="")  
-				p.Value =DBNull.Value;
-			else
-			{	string data_end1 =string.Empty; 
-			data_end1=CalendarPicker6.Datazione.Text;
-			if(data_end1!="")
-			{ 
-				string ora_end=((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
-				data_end1 += " " + ora_end;  
-			}
-			if(data_end1!="")
-				p.Value =data_end1;
-			else
-				p.Value =DBNull.Value;}
+			p.Size =256;
+			p.Value =txtSeguito4.Text;
 			_SColl.Add(p);
 
+			//STATO
 			p = new S_Object();
-			p.ParameterName = "p_datefine";
-			p.DbType = CustomDBType.Date;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			if (CalendarPicker2.Datazione.Text=="")  
-				p.Value =DBNull.Value;
-			else
-			{
-				string data_end1 =string.Empty; 
-				data_end1=CalendarPicker2.Datazione.Text;
-				if(data_end1!="")
-				{ 
-					string ora_end=((cmborafinelav.SelectedValue=="")?"00":cmborafinelav.SelectedValue) + ":" + ((cmbminfinelav.SelectedValue=="")?"00":cmbminfinelav.SelectedValue) + ":00";
-					data_end1 += " " + ora_end;  
-				}
-				if(data_end1!="")
-					p.Value =data_end1;
-				else
-					p.Value =DBNull.Value;
-			}
-			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "p_tipomanutenzione";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value =int.Parse(cmbsTipoManutenzione.SelectedValue);  
-			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "p_tipointervento";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value =int.Parse(cmbsTipoIntrevento.SelectedValue);  
-
-
-			return _SColl;
-		}
-
-		
-		private int SaveSGA()
-		{
-			int result=0;
-			S_ControlsCollection _SColl =GetSgaParameter();
-
-			S_Object p = new S_Object();
 			p.ParameterName = "p_stato";
 			p.DbType = CustomDBType.Integer;
 			p.Direction = ParameterDirection.Input;
 			p.Index = _SColl.Count;
-			p.Value =-1; 
+			p.Value =6; 
 			_SColl.Add(p);
 
 
-			result= _ClManCorrettiva.ExecuteUpdateSGA(_SColl); 
+
+
+			
+			
+			//_SColl=GetParamEmissione(_SColl);			
+			
+			//			// STATO
+			//			S_Object p = new S_Object();
+			//			p.ParameterName = "p_stato";
+			//			p.DbType = CustomDBType.Integer;
+			//			p.Direction = ParameterDirection.Input;
+			//			p.Index = _SColl.Count;
+			//			p.Value =6; 
+			//			_SColl.Add(p);
+
+			int result= _ClManCorrettiva.ExecuteUpdateSGA1(_SColl); 
+//			SaveDocumentPreventivo();
+//			LoadDati();
+//			azioni.Visible=true;
+//			result= _ClManCorrettiva.ExecuteUpdateSGA(_SColl); 
 			return result;
 		}
 
@@ -2049,7 +1837,55 @@ namespace TheSite.ManutenzioneCorrettiva
 
 		}
 
+		
+		private void Repeater1_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
+		{
+			if(e.Item.ItemType ==ListItemType.Item ||   e.Item.ItemType ==ListItemType.AlternatingItem)
+			{
+			
+				ImageButton bt=e.Item.FindControl("delete1") as ImageButton; 
+				bt.Attributes.Add("onclick", "return deletedoc();");
+			}
+		}
 
+		private void Repeater1_ItemCommand(object source, System.Web.UI.WebControls.RepeaterCommandEventArgs e)
+		{
+			if(e.CommandName.ToLower().Equals("delete")) 
+			{
+				
+				if (this.IsCompletata) return;
+
+				S_ControlsCollection _SColl = new S_ControlsCollection();
+				
+		
+				S_Controls.Collections.S_Object p = new S_Object();
+				p.ParameterName = "p_id_wr_h_lav";
+				p.DbType = CustomDBType.Integer;
+				p.Direction = ParameterDirection.Input;
+				p.Index = _SColl.Count;
+				p.Value = Int32.Parse(e.CommandArgument.ToString());
+				_SColl.Add(p);
+				
+
+				int result=_ClManCorrettiva.ExecuteDELHLAV(_SColl);				
+				LoadHLAV();
+			}
+		}
+
+		
+
+
+		private void cmbsDitta_SelectedIndexChanged(object sender, System.EventArgs e)
+		{
+			if (Int32.Parse(cmbsDitta.SelectedValue.ToString())>0)
+			{
+				LoadAddettiDitta("",Int32.Parse(cmbsDitta.SelectedValue.ToString()),int.Parse(cmbsServizio.SelectedValue));
+			}
+			else
+			{
+				LoadAddettiDitta("-1",-1,int.Parse(cmbsServizio.SelectedValue));
+			}
+		}
 
 	
 		private S_ControlsCollection GetParamEmissione(S_ControlsCollection _SColl)
@@ -2076,35 +1912,52 @@ namespace TheSite.ManutenzioneCorrettiva
 			_SColl.Add(p);
 			
 			
-			
+			// DATAPIANIFICATA
+			p = new S_Object();
+			p.ParameterName = "p_datapianificata";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;			
+			p.Size=30;
 
-//			// ID_DITTA
-//			p = new S_Object();
-//			p.ParameterName = "p_id_ditta";
-//			p.DbType = CustomDBType.Integer;
-//			p.Direction = ParameterDirection.Input;
-//			p.Index = _SColl.Count;
-//			p.Value = (cmbsDitta.SelectedValue=="")?0:int.Parse(cmbsDitta.SelectedValue);
-//			_SColl.Add(p);
+			//Data Pianificata	
+			string data_pianificata="";
+			string data_p=CalendarPicker6.Datazione.Text;
+			if(data_p!="")
+			{ 
+				string ora_p= ((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
+				data_pianificata = data_p + " " + ora_p;  
+			}
+			p.Value = data_pianificata;
+			_SColl.Add(p);
 
-//			// ID dell'edificio
-//			p = new S_Object();
-//			p.ParameterName = "p_bl_id";
-//			p.DbType = CustomDBType.Integer;
-//			p.Direction = ParameterDirection.Input;
-//			p.Index = _SColl.Count;
-//			p.Value = int.Parse(hidBl_id.Value);
-//			_SColl.Add(p);
-//			// RICHIEDENTE
-//
-//			p = new S_Object();
-//			p.ParameterName = "p_richiedente";
-//			p.DbType = CustomDBType.VarChar;
-//			p.Direction = ParameterDirection.Input;
-//			p.Index = _SColl.Count;
-//			p.Size=35;
-//			p.Value = lblRichiedente.Text;
-//			_SColl.Add(p);
+			// ID_DITTA
+			p = new S_Object();
+			p.ParameterName = "p_id_ditta";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value = (cmbsDitta.SelectedValue=="")?0:int.Parse(cmbsDitta.SelectedValue);
+			_SColl.Add(p);
+
+			// ID dell'edificio
+			p = new S_Object();
+			p.ParameterName = "p_bl_id";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value = int.Parse(hidBl_id.Value);
+			_SColl.Add(p);
+			// RICHIEDENTE
+
+			p = new S_Object();
+			p.ParameterName = "p_richiedente";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Size=35;
+			p.Value = lblRichiedente.Text;
+			_SColl.Add(p);
 			
 			// NR PREVENTIVO
 			p = new S_Object();
@@ -2129,37 +1982,54 @@ namespace TheSite.ManutenzioneCorrettiva
 			_SColl.Add(p);
 			
 
+			// DATA SOPRALLUOGO 2
+			p = new S_Object();
+			p.ParameterName = "p_datapsopralluogo";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;			
+			p.Size=30;
+						
+			string data_sopralluogo2="";
+			string data_s2=CalendarPicker5.Datazione.Text;
+			if(data_s2!="")
+			{ 
+				string ora_s2= ((S_COMBOBOX6.SelectedValue=="")?"00":S_COMBOBOX6.SelectedValue) + ":" + ((S_COMBOBOX5.SelectedValue=="")?"00":S_COMBOBOX5.SelectedValue) + ":00";
+				data_sopralluogo2 = data_s2 + " " + ora_s2;  
+			}
+			p.Value = data_sopralluogo2;
+			_SColl.Add(p);
+
+			// NOTE SOPRALLUOGO
+
+			p = new S_Object();
+			p.ParameterName = "p_comments";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Size =256;
+			p.Value =cmbDescrizioneIntervento.Text;
+			_SColl.Add(p);
+
+
+
 			return _SColl;
 		}
 
 		private void btApprova_Click(object sender, System.EventArgs e)
 		{	
 			
-			string scriptString="";
-			TheSite.Classi.ManStraordinaria.ManCorrettivaPaging _Manc1= new TheSite.Classi.ManStraordinaria.ManCorrettivaPaging();
-			string msgsoglia=_Manc1.CKSogliaAut(double.Parse(txtImpPrev1.Text + "," + txtImpPrev2.Text),int.Parse(cmbsServizio.SelectedValue),wr_id);
-			if (msgsoglia!="")			
-			{
-				scriptString= "<script language=\"JavaScript\">alert(\"" + msgsoglia + "\");<";
-				scriptString += "/";
-				scriptString += "script>";
-				this.RegisterStartupScript("Startup2", scriptString);
-				return;
-			}
-
-			if(S_macroarea==null || S_macroarea.SelectedValue.Equals("")
-				||S_macroarea.SelectedValue.Equals("30")
-				)
-			{
-				scriptString= "<script language=\"JavaScript\">alert('Selezionare Macroarea Obbligatoriamente');<";
-				scriptString += "/";
-				scriptString += "script>";
-				this.RegisterStartupScript("Startup2", scriptString);
-				return;
-			}
-			
-
-
+//			string scriptString="";
+//			TheSite.Classi.ManStraordinaria.ManCorrettivaPaging _Manc1= new TheSite.Classi.ManStraordinaria.ManCorrettivaPaging();
+//			string msgsoglia=_Manc1.CKSogliaAut(double.Parse(txtImpPrev1.Text + "," + txtImpPrev2.Text),int.Parse(cmbsServizio.SelectedValue),wr_id);
+//			if (msgsoglia!="")			
+//			{
+//				scriptString= "<script language=\"JavaScript\">alert(\"" + msgsoglia + "\");<";
+//				scriptString += "/";
+//				scriptString += "script>";
+//				this.RegisterStartupScript("Startup2", scriptString);
+//				return;
+//			}
 			
 //			if (AUT!="")
 //			{
@@ -2188,9 +2058,303 @@ namespace TheSite.ManutenzioneCorrettiva
 //			return;
 //			}
 			//controllo stato autorizzazione//
-			S_ControlsCollection _SColl =GetSgaParameter();
-			// STATO
-			S_Object p = new S_Object();
+//			S_ControlsCollection _SColl = new S_ControlsCollection();			
+//			_SColl =GetSgaParameter();
+
+			
+
+			//p = new S_Object();
+			//p.ParameterName = "p_servizio";
+			//p.DbType = CustomDBType.Integer;
+			//p.Direction = ParameterDirection.Input;
+			//p.Index = _SColl.Count;
+			//if (cmbsServizio.SelectedValue=="" || cmbsServizio.SelectedValue=="0")
+			//	p.Value = DBNull.Value;
+			//else
+			//	p.Value =int.Parse(cmbsServizio.SelectedValue);
+			//_SColl.Add(p);
+
+
+			//p = new S_Object();
+			//p.ParameterName = "p_stdapparechhiatura";
+			//p.DbType = CustomDBType.Integer;
+			//p.Direction = ParameterDirection.Input;
+			//p.Index = _SColl.Count;
+			//if (cmdsStdApparecchiatura.SelectedValue=="" || cmdsStdApparecchiatura.SelectedValue=="0")
+			//	p.Value =DBNull.Value;
+			//else
+			//	p.Value =int.Parse(cmdsStdApparecchiatura.SelectedValue);
+			//_SColl.Add(p);
+
+			//p = new S_Object();
+			//p.ParameterName = "p_eq";
+			//p.DbType = CustomDBType.Integer;
+			//p.Direction = ParameterDirection.Input;
+			//p.Index = _SColl.Count;
+			//if (cmbEQ.SelectedValue=="" || cmbEQ.SelectedValue=="0")
+			//	p.Value =DBNull.Value;
+			//else
+			//	p.Value =int.Parse(cmbEQ.SelectedValue);
+			//_SColl.Add(p);
+
+			//p = new S_Object();
+			//p.ParameterName = "p_descrizione";
+			//p.DbType = CustomDBType.VarChar;
+			//p.Direction = ParameterDirection.Input;
+			//p.Size =4000;
+			//p.Index = _SColl.Count;
+			//p.Value =txtsDescrizione.Text;
+			//_SColl.Add(p);
+
+			//p = new S_Object();
+			//p.ParameterName = "p_anomalia";
+			//p.DbType = CustomDBType.VarChar;
+			//p.Direction = ParameterDirection.Input;
+			//p.Size =408;
+			//p.Index = _SColl.Count;
+			//p.Value =txtCausa.Text;
+			//_SColl.Add(p);
+
+			//p = new S_Object();
+			//p.ParameterName = "p_effetto";
+			//p.DbType = CustomDBType.VarChar;
+			//p.Direction = ParameterDirection.Input;
+			//p.Size =408;
+			//p.Index = _SColl.Count;
+			//p.Value =txtEffettoGuasto.Text;
+			//_SColl.Add(p);
+
+			//p = new S_Object();
+			//p.ParameterName = "p_soluzione";
+			//p.DbType = CustomDBType.VarChar;
+			//p.Direction = ParameterDirection.Input;
+			//p.Size =408;
+			//p.Index = _SColl.Count;
+			//p.Value =txtSoluzioneProposta.Text;
+			//_SColl.Add(p);
+
+
+//procedure sp_updateSgaNUOVA1
+//(
+// p_wr_id in number,--ok
+// p_datainizio in varchar2 ,--ok
+// p_datefine in varchar2,--ok
+// p_tipomanutenzione in number,--ok
+// p_addetto_id in number default null, --ok
+// p_id_ditta in number default null, 
+// p_datasopralluogo in varchar2,
+// p_stato in number,
+// p_CurrentUser in varchar2,
+// p_IdOut out NUMBER
+//)
+//			
+			S_ControlsCollection _SColl = new S_ControlsCollection();
+			S_Controls.Collections.S_Object p = new S_Object();
+			p.ParameterName = "p_wr_id";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value = this.wr_id;
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_datainizio";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			//			if (CalendarPicker6.Datazione.Text=="")  
+			//				p.Value =DBNull.Value;
+			//			else
+			//				p.Value =DateTime.Parse(CalendarPicker6.Datazione.Text); 
+
+			
+			if (CalendarPicker6.Datazione.Text=="")  
+				p.Value =DBNull.Value;
+			else
+			{
+				string data_start1 =string.Empty; 
+				data_start1=CalendarPicker6.Datazione.Text;
+				if(data_start1!="")
+				{ 
+					string ora_inizio=((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
+					data_start1 += " " + ora_inizio;  
+				}
+				if(data_start1!="")
+					p.Value =data_start1;
+				else
+					p.Value =DBNull.Value;
+			}
+			
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_datefine";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			if (CalendarPicker2.Datazione.Text=="")  
+				p.Value =DBNull.Value;
+			else
+			{
+				string data_end1 =string.Empty; 
+				data_end1=CalendarPicker2.Datazione.Text;
+				if(data_end1!="")
+				{ 
+					string ora_end=((cmborafinelav.SelectedValue=="")?"00":cmborafinelav.SelectedValue) + ":" + ((cmbminfinelav.SelectedValue=="")?"00":cmbminfinelav.SelectedValue) + ":00";
+					data_end1 += " " + ora_end;  
+				}
+				if(data_end1!="")
+					p.Value =data_end1;
+				else
+					p.Value =DBNull.Value;
+			}
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_tipomanutenzione";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value =int.Parse(cmbsTipoManutenzione.SelectedValue);  
+			_SColl.Add(p);
+			if(cmbsTipoManutenzione.SelectedValue!="3")//diversa da straordinaria
+			{
+				txtImp1.Text="";
+				txtImp1_1.Text="";
+				txtImp2.Text="";
+				txtImp2_1.Text=""; 
+				txtPercentuale1.Text="";
+				txtPercentuale2.Text="";
+				
+			}
+
+			p = new S_Object();
+			p.ParameterName = "p_addetto_id";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			if (cmbsAddetto.SelectedValue == "0")
+				p.Value = DBNull.Value;
+			else
+				p.Value = int.Parse(cmbsAddetto.SelectedValue);
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_id_ditta";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value = (cmbsDitta.SelectedValue == "") ? 0 : int.Parse(cmbsDitta.SelectedValue);
+			_SColl.Add(p);
+
+
+			//p = new S_Object();
+			//p.ParameterName = "p_tipointervento";
+			//p.DbType = CustomDBType.Integer;
+			//p.Direction = ParameterDirection.Input;
+			//p.Index = _SColl.Count;
+			//p.Value =int.Parse(cmbsTipoIntrevento.SelectedValue);  
+			//_SColl.Add(p);
+
+
+
+			//p = new S_Object();
+			//p.ParameterName = "p_note";
+			//p.DbType = CustomDBType.VarChar;
+			//p.Direction = ParameterDirection.Input;
+			//p.Index = _SColl.Count;
+			//p.Size=408;
+			//p.Value =txtNoteSga.Text; 
+			//_SColl.Add(p);
+
+			// URGENZA
+			//p = new S_Object();
+			//p.ParameterName = "p_urgenza";
+			//p.DbType = CustomDBType.Integer;
+			//p.Direction = ParameterDirection.Input;
+			//p.Index = _SColl.Count;
+			//p.Value = cmbsUrgenza.SelectedValue; //Int32.Parse(cmbsUrgenza.SelectedValue.Split(Convert.ToChar(","))[0]);	
+			//_SColl.Add(p);
+
+
+
+			// DATAPIANIFICATA
+			//p = new S_Object();
+			//p.ParameterName = "p_datapianificata";
+			//p.DbType = CustomDBType.VarChar;
+			//p.Direction = ParameterDirection.Input;
+			//p.Index = _SColl.Count;			
+			//p.Size=30;
+
+			////Data Pianificata	
+			//string data_pianificata="";
+			//string data_p=CalendarPicker6.Datazione.Text;
+			//if(data_p!="")
+			//{ 
+			//	string ora_p= ((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
+			//	data_pianificata = data_p + " " + ora_p;  
+			//}
+			//p.Value = data_pianificata;
+			//_SColl.Add(p);
+
+			// ID_DITTA
+
+
+			//// NR PREVENTIVO
+			//p = new S_Object();
+			//p.ParameterName = "p_numeropreventivo";
+			//p.DbType = CustomDBType.VarChar;
+			//p.Direction = ParameterDirection.Input;
+			//p.Index = _SColl.Count;
+			//p.Size=20;
+			//p.Value =TxtNumPreventivo.Text;
+			//_SColl.Add(p);
+
+			////IMPORTO PREVENTIVO
+			//p = new S_Object();
+			//p.ParameterName = "p_importopreventivo";
+			//p.DbType = CustomDBType.Double;
+			//p.Direction = ParameterDirection.Input;
+			//p.Index = _SColl.Count;
+			//if(txtImpPrev1.Text=="") 
+			//	p.Value =0;
+			//else
+			//	p.Value =double.Parse(txtImpPrev1.Text + "," + txtImpPrev2.Text);  
+			//_SColl.Add(p);
+
+
+			//DATA SOPRALLUOGO 3
+			p = new S_Object();
+			p.ParameterName = "p_datasopralluogo";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Size = 30;
+
+			string data_sopralluogo3 = "";
+			string data_s3 = CalendarPicker5.Datazione.Text;
+			if (data_s3 != "")
+			{
+				string ora_s3 = ((S_COMBOBOX6.SelectedValue == "") ? "00" : S_COMBOBOX6.SelectedValue) + ":" + ((S_COMBOBOX5.SelectedValue == "") ? "00" : S_COMBOBOX5.SelectedValue) + ":00";
+				data_sopralluogo3 = data_s3 + " " + ora_s3;
+			}
+			p.Value = data_sopralluogo3;
+			_SColl.Add(p);
+
+
+			// NOTE SOPRALLUOGO
+
+			//p = new S_Object();
+			//p.ParameterName = "p_note_sopralluogo";
+			//p.DbType = CustomDBType.VarChar;
+			//p.Direction = ParameterDirection.Input;
+			//p.Index = _SColl.Count;
+			//p.Size =256;
+			//p.Value =txtSeguito4.Text;
+			//_SColl.Add(p);
+
+			//STATO
+			p = new S_Object();
 			p.ParameterName = "p_stato";
 			p.DbType = CustomDBType.Integer;
 			p.Direction = ParameterDirection.Input;
@@ -2198,48 +2362,328 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Value =6; 
 			_SColl.Add(p);
 
-			_SColl=GetParamEmissione(_SColl);			
+
+
+
+			
+			
+			//_SColl=GetParamEmissione(_SColl);			
+			
+//			// STATO
+//			S_Object p = new S_Object();
+//			p.ParameterName = "p_stato";
+//			p.DbType = CustomDBType.Integer;
+//			p.Direction = ParameterDirection.Input;
+//			p.Index = _SColl.Count;
+//			p.Value =6; 
+//			_SColl.Add(p);
+
+			int result= _ClManCorrettiva.ExecuteUpdateSGA1(_SColl); 
+			SaveDocumentPreventivo();
+			LoadDati();
+			azioni.Visible=true;
+		}
+
+
+		private S_ControlsCollection GetSgaParameter()
+		{
+			
+			
+			S_ControlsCollection _SColl = new S_ControlsCollection();
+			
+			S_Controls.Collections.S_Object p = new S_Object();
+			p.ParameterName = "p_wr_id";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value = this.wr_id;
+			_SColl.Add(p);
+	
+			p = new S_Object();
+			p.ParameterName = "p_servizio";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			if (cmbsServizio.SelectedValue=="" || cmbsServizio.SelectedValue=="0")
+				p.Value = DBNull.Value;
+			else
+				p.Value =int.Parse(cmbsServizio.SelectedValue);
+			_SColl.Add(p);
+
+			
+			p = new S_Object();
+			p.ParameterName = "p_stdapparechhiatura";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			if (cmdsStdApparecchiatura.SelectedValue=="" || cmdsStdApparecchiatura.SelectedValue=="0")
+				p.Value =DBNull.Value;
+			else
+				p.Value =int.Parse(cmdsStdApparecchiatura.SelectedValue);
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_eq";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			if (cmbEQ.SelectedValue=="" || cmbEQ.SelectedValue=="0")
+				p.Value =DBNull.Value;
+			else
+				p.Value =int.Parse(cmbEQ.SelectedValue);
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_descrizione";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Size =4000;
+			p.Index = _SColl.Count;
+			p.Value =txtsDescrizione.Text;
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_anomalia";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Size =408;
+			p.Index = _SColl.Count;
+			p.Value =txtCausa.Text;
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_effetto";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Size =408;
+			p.Index = _SColl.Count;
+			p.Value =txtEffettoGuasto.Text;
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_soluzione";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Size =408;
+			p.Index = _SColl.Count;
+			p.Value =txtSoluzioneProposta.Text;
+			_SColl.Add(p);
+
+
+			p = new S_Object();
+			p.ParameterName = "p_datainizio";
+			p.DbType = CustomDBType.Date;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			//			if (CalendarPicker6.Datazione.Text=="")  
+			//				p.Value =DBNull.Value;
+			//			else
+			//				p.Value =DateTime.Parse(CalendarPicker6.Datazione.Text); 
+
+			
+			if (CalendarPicker6.Datazione.Text=="")  
+				p.Value =DBNull.Value;
+			else
+			{
+				string data_start1 =string.Empty; 
+				data_start1=CalendarPicker6.Datazione.Text;
+				if(data_start1!="")
+				{ 
+					string ora_inizio=((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
+					data_start1 += " " + ora_inizio;  
+				}
+				if(data_start1!="")
+					p.Value =data_start1;
+				else
+					p.Value =DBNull.Value;
+			}
+			
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_datefine";
+			p.DbType = CustomDBType.Date;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			if (CalendarPicker2.Datazione.Text=="")  
+				p.Value =DBNull.Value;
+			else
+			{
+				string data_end1 =string.Empty; 
+				data_end1=CalendarPicker2.Datazione.Text;
+				if(data_end1!="")
+				{ 
+					string ora_end=((cmborafinelav.SelectedValue=="")?"00":cmborafinelav.SelectedValue) + ":" + ((cmbminfinelav.SelectedValue=="")?"00":cmbminfinelav.SelectedValue) + ":00";
+					data_end1 += " " + ora_end;  
+				}
+				if(data_end1!="")
+					p.Value =data_end1;
+				else
+					p.Value =DBNull.Value;
+
+
+			}
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_tipomanutenzione";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value =int.Parse(cmbsTipoManutenzione.SelectedValue);  
+			_SColl.Add(p);
+
+			
+			if(cmbsTipoManutenzione.SelectedValue!="3")//diversa da straordinaria
+			{
+				txtImp1.Text="";
+				txtImp1_1.Text="";
+				txtImp2.Text="";
+				txtImp2_1.Text=""; 
+				txtPercentuale1.Text="";
+				txtPercentuale2.Text="";
+				
+			}
+			p = new S_Object();
+			p.ParameterName = "p_tipointervento";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value =int.Parse(cmbsTipoIntrevento.SelectedValue);  
+			_SColl.Add(p);
+
+	
+
+			p = new S_Object();
+			p.ParameterName = "p_note";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Size=408;
+			p.Value =txtNoteSga.Text; 
+			_SColl.Add(p);
+			
+			// URGENZA
+			p = new S_Object();
+			p.ParameterName = "p_urgenza";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value = cmbsUrgenza.SelectedValue; //Int32.Parse(cmbsUrgenza.SelectedValue.Split(Convert.ToChar(","))[0]);	
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_addetto_id";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			if(cmbsAddetto.SelectedValue=="0")
+				p.Value = DBNull.Value;
+			else
+				p.Value =int.Parse(cmbsAddetto.SelectedValue);
+			_SColl.Add(p);
+			
+			
+			// DATAPIANIFICATA
+			p = new S_Object();
+			p.ParameterName = "p_datapianificata";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;			
+			p.Size=30;
+
+			//Data Pianificata	
+			string data_pianificata="";
+			string data_p=CalendarPicker6.Datazione.Text;
+			if(data_p!="")
+			{ 
+				string ora_p= ((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
+				data_pianificata = data_p + " " + ora_p;  
+			}
+			p.Value = data_pianificata;
+			_SColl.Add(p);
+
+			// ID_DITTA
+			p = new S_Object();
+			p.ParameterName = "p_id_ditta";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value = (cmbsDitta.SelectedValue=="")?0:int.Parse(cmbsDitta.SelectedValue);
+			_SColl.Add(p);
+		
+			
+			// NR PREVENTIVO
+			p = new S_Object();
+			p.ParameterName = "p_numeropreventivo";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Size=20;
+			p.Value =TxtNumPreventivo.Text;
+			_SColl.Add(p);
+
+			//IMPORTO PREVENTIVO
+			p = new S_Object();
+			p.ParameterName = "p_importopreventivo";
+			p.DbType = CustomDBType.Double;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			if(txtImpPrev1.Text=="") 
+				p.Value =0;
+			else
+				p.Value =double.Parse(txtImpPrev1.Text + "," + txtImpPrev2.Text);  
+			_SColl.Add(p);
 			
 
-				int result= _ClManCorrettiva.ExecuteUpdateSGA2(_SColl); 
-				SaveDocumentPreventivo();
-				LoadDati();
-				azioni.Visible=true;
+			// DATA SOPRALLUOGO 4
+			p = new S_Object();
+			p.ParameterName = "p_datapsopralluogo";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;			
+			p.Size=30;
+						
+			string data_sopralluogo4="";
+			string data_s4=CalendarPicker5.Datazione.Text;
+			if(data_s4!="")
+			{ 
+				string ora_s4= ((S_COMBOBOX6.SelectedValue=="")?"00":S_COMBOBOX6.SelectedValue) + ":" + ((S_COMBOBOX5.SelectedValue=="")?"00":S_COMBOBOX5.SelectedValue) + ":00";
+				data_sopralluogo4 = data_s4 + " " + ora_s4;  
+			}
+			p.Value = data_sopralluogo4;
+			_SColl.Add(p);
 
+			// NOTE SOPRALLUOGO
+
+			p = new S_Object();
+			p.ParameterName = "p_note_sopralluogo";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Size =256;
+			p.Value =cmbDescrizioneIntervento.Text;
+			_SColl.Add(p);
+
+			//STATO
+			p = new S_Object();
+			p.ParameterName = "p_stato";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value =6; 
+			_SColl.Add(p);
+
+
+
+
+			return _SColl;
 		}
+
+
 
 		private void btSospendi_Click(object sender, System.EventArgs e)
 		{
-			
-
-			S_ControlsCollection _SColl = new S_ControlsCollection();
-		
-			S_Controls.Collections.S_Object p = new S_Object();
-			p.ParameterName = "p_wr_id";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value = this.wr_id;
-			_SColl.Add(p);
-			
-			
-			p = new S_Object();
-			p.ParameterName = "p_stato";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value =15; //Sospesa
-			_SColl.Add(p);
-
-			int result= _ClManCorrettiva.ExecuteUpdateSGARIFSOSP(_SColl);  
-
-			//SaveDocumentPreventivo();
-
-			Chiudi();
-		}
-
-		private void btRifiuta_Click(object sender, System.EventArgs e)
-		{
 			S_ControlsCollection _SColl = new S_ControlsCollection();
 		
 			S_Controls.Collections.S_Object p = new S_Object();
@@ -2255,7 +2699,7 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.DbType = CustomDBType.Integer;
 			p.Direction = ParameterDirection.Input;
 			p.Index = _SColl.Count;
-			p.Value =7; //Rifiutata
+			p.Value =15; //sospesa
 			_SColl.Add(p);
 
 			int result= _ClManCorrettiva.ExecuteUpdateSGARIFSOSP(_SColl); 
@@ -2263,7 +2707,34 @@ namespace TheSite.ManutenzioneCorrettiva
 			//SaveDocumentPreventivo();
 
 			Chiudi();
-			//lblDataRichiesta.Text.Substring(7,4);
+		}
+
+		private void btRifiuta_Click(object sender, System.EventArgs e)
+		{
+
+			S_ControlsCollection _SColl = new S_ControlsCollection();
+		
+			S_Controls.Collections.S_Object p = new S_Object();
+			p.ParameterName = "p_wr_id";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value = this.wr_id;
+			_SColl.Add(p);
+
+			p = new S_Object();
+			p.ParameterName = "p_stato";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value =7; //rifiuta
+			_SColl.Add(p);
+
+			int result= _ClManCorrettiva.ExecuteUpdateSGARIFSOSP(_SColl); 
+		
+			//SaveDocumentPreventivo();
+
+			Chiudi();
 		}
 
 		private void btChiudi_Click(object sender, System.EventArgs e)
@@ -2274,8 +2745,20 @@ namespace TheSite.ManutenzioneCorrettiva
 		{
 			string varapp="";
 			if(Request["VarApp"]!=null)
-				varapp="&VarApp=" + Request["VarApp"];			
+				varapp="&VarApp=" + Request["VarApp"];
+			
 			Server.Transfer(HPageBack.Value +"?FunId=" + ViewState["FunId"] + varapp);
+
+
+			if (HPageBack.Value=="SfogliaRdlPaging6.aspx")
+			{
+				Response.Redirect("SfogliaRdlPaging6.aspx?");
+			}
+//			if (HPageBack.Value=="SfogliaRdlPaging8.aspx")
+//			{Response.Redirect("SfogliaRdlPaging8.aspx?CdC=" + cmbCdC.SelectedValue.ToString()+"&FunId="+ViewState["FunId"]+"&Anno="+lblDataRichiesta.Text.Substring(6,4).ToString()); }	
+//			else {Server.Transfer(HPageBack.Value +"?FunId=" + ViewState["FunId"] + varapp);}
+
+
 		}
 
 		private void btFoglioPdf_Click(object sender, System.EventArgs e)
@@ -2293,11 +2776,7 @@ namespace TheSite.ManutenzioneCorrettiva
 			string s_CodaScript = "</script>\n";
 			string funzione=s_TestataScript + funz + s_CodaScript;
 			this.Page.RegisterStartupScript("funz",funzione);
-
-
 		}
-
-
 
 		private void ScriptRapportoTecnico(int wo_id)
 		{
@@ -2357,56 +2836,41 @@ namespace TheSite.ManutenzioneCorrettiva
 
 		private void BtSalva_Click(object sender, System.EventArgs e)
 		{
-			SaveCompletamento();
-			
+			SaveCompletamento();			
 			LoadDati();
 		}
 		private void SaveCompletamento()
 		{	
-
-			//controllo stato autorizzazione//
-			int.Parse(cmbsTipoManutenzione.SelectedValue);  
-			TheSite.Classi.ManStraordinaria.ManCorrettivaPaging _Manc= new TheSite.Classi.ManStraordinaria.ManCorrettivaPaging();
-			string msg=_Manc.CKStatusAut(wr_id, int.Parse(cmbsTipoManutenzione.SelectedValue));
+//
+//			//controllo stato autorizzazione//
+//			int.Parse(cmbsTipoManutenzione.SelectedValue);  
+//			TheSite.Classi.ManStraordinaria.ManCorrettivaPaging _Manc= new TheSite.Classi.ManStraordinaria.ManCorrettivaPaging();
+//			string msg=_Manc.CKStatusAut(wr_id, int.Parse(cmbsTipoManutenzione.SelectedValue));
+//			string scriptString="";
+//			if (msg=="RDL NON AUTORIZZATA")			
+//			{	scriptString= "<script language=\"JavaScript\">alert(\"" + msg + "\");<";
+//				scriptString += "/";
+//				scriptString += "script>";
+//				this.RegisterStartupScript("Startup2", scriptString);
+//				return;
+//			}
 			string scriptString="";
-			if (msg=="RDL NON AUTORIZZATA")			
+			int resultck= _ClManCorrettiva.checkHRdl(wr_id);
+			string msg1="INSERIRE DATE COMPLETAMENTO RDL";
+			if (resultck==0) 
 			{
-				scriptString= "<script language=\"JavaScript\">alert(\"" + msg + "\");<";
+				
+				scriptString= "<script language=\"JavaScript\">alert(\"" + msg1 + "\");<";
 				scriptString += "/";
 				scriptString += "script>";
 				this.RegisterStartupScript("Startup2", scriptString);
 				return;
-			}
 			
-//			if(S_PIANO==null || S_PIANO.SelectedValue.Equals("")){
-//				scriptString= "<script language=\"JavaScript\">alert('Piano Obbligatorio');<";
-//				scriptString += "/";
-//				scriptString += "script>";
-//				this.RegisterStartupScript("Startup2", scriptString);
-//				return;
-//			}
-//			if(UserStanzeRic1==null || UserStanzeRic1.IdStanza.Equals(""))
-//			{
-//				scriptString= "<script language=\"JavaScript\">alert('Stanza Obbligatoria');<";
-//				scriptString += "/";
-//				scriptString += "script>";
-//				this.RegisterStartupScript("Startup2", scriptString);
-//				return;
-//			}
-
-			if(S_macroarea==null || S_macroarea.SelectedValue.Equals("")
-				||S_macroarea.SelectedValue.Equals("30")
-				)
-			{
-				scriptString= "<script language=\"JavaScript\">alert('Selezionare Macroarea Obbligatoriamente');<";
-				scriptString += "/";
-				scriptString += "script>";
-				this.RegisterStartupScript("Startup2", scriptString);
-				return;
 			}
-
-
 			//fine controllo stato
+//			S_ControlsCollection _SColl =GetSgaParameter();
+			
+			
 			S_ControlsCollection _SColl = new S_ControlsCollection();
 		
 			S_Controls.Collections.S_Object p = new S_Object();
@@ -2416,53 +2880,7 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Index = _SColl.Count;
 			p.Value = this.wr_id;
 			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "p_datarichiesta";
-			p.DbType = CustomDBType.Date;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-	
-			string data_startrich =string.Empty; 
-			data_startrich=CalendarPicker1.Datazione.Text;
-			if(data_startrich!="")
-			{ 
-				string ora_iniziorich=((S_COMBOBOX4.SelectedValue=="")?"00":S_COMBOBOX4.SelectedValue) + ":" + ((S_COMBOBOX3.SelectedValue=="")?"00":S_COMBOBOX3.SelectedValue) + ":00";
-				data_startrich += " " + ora_iniziorich;  
-			}
-			if(data_startrich!="")
-				p.Value =data_startrich;
-			else
-				p.Value =DBNull.Value;
-
-			_SColl.Add(p);
-			
-			
-			p = new S_Object();
-			p.ParameterName = "p_id_fl";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value = int.Parse(S_PIANO.SelectedValue); 
-			_SColl.Add(p);
-			
-			p = new S_Object();
-			p.ParameterName = "p_id_rm";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value =(UserStanzeRic1.IdStanza=="")?0:int.Parse(UserStanzeRic1.IdStanza);
-			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "p_id_rm_cat";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value = int.Parse(S_macroarea.SelectedValue); 
-			_SColl.Add(p);
-				
-
+		
 			p = new S_Object();
 			p.ParameterName = "p_descrizione";
 			p.DbType = CustomDBType.VarChar;
@@ -2498,24 +2916,6 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Index = _SColl.Count;
 			p.Value =txtSoluzioneProposta.Text;
 			_SColl.Add(p);
-			
-			// DATASOPRALLUOGO
-			p = new S_Object();
-			p.ParameterName = "p_datasopralluogo";
-			p.DbType = CustomDBType.VarChar;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;			
-			p.Size=30;
-
-			//Data Sopralluogo	
-			string data_sopralluogo=CalendarPicker4.Datazione.Text;
-			if(data_sopralluogo!="")
-			{ 
-				string ora_sopralluogo= ((OraSopralluogo.SelectedValue=="")?"00":OraSopralluogo.SelectedValue) + ":" + ((MinutiSopralluogo.SelectedValue=="")?"00":MinutiSopralluogo.SelectedValue) + ":00";
-				data_sopralluogo = data_sopralluogo + " " + ora_sopralluogo;  
-			}
-			p.Value = data_sopralluogo;
-			_SColl.Add(p);
 
 
 			p = new S_Object();
@@ -2523,21 +2923,24 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.DbType = CustomDBType.Date;
 			p.Direction = ParameterDirection.Input;
 			p.Index = _SColl.Count;
+						
 			if (CalendarPicker6.Datazione.Text=="")  
 				p.Value =DBNull.Value;
 			else
 			{
-					string data_end1 =string.Empty; 
-				data_end1=CalendarPicker6.Datazione.Text;
-				if(data_end1!="")
+				string data_start1 =string.Empty; 
+				data_start1=CalendarPicker6.Datazione.Text;
+				if(data_start1!="")
 				{ 
-					string ora_end=((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
-					data_end1 += " " + ora_end;  
+					string ora_inizio=((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
+					data_start1 += " " + ora_inizio;  
 				}
-				if(data_end1!="")
-					p.Value =data_end1;
+				if(data_start1!="")
+					p.Value =data_start1;
 				else
-					p.Value =DBNull.Value;}
+					p.Value =DBNull.Value;
+
+			}
 			_SColl.Add(p);
 
 			p = new S_Object();
@@ -2560,6 +2963,8 @@ namespace TheSite.ManutenzioneCorrettiva
 					p.Value =data_end1;
 				else
 					p.Value =DBNull.Value;
+
+
 			}
 			_SColl.Add(p);
 
@@ -2571,6 +2976,17 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Value =int.Parse(cmbsTipoManutenzione.SelectedValue);  
 			_SColl.Add(p);
 
+			
+			if(cmbsTipoManutenzione.SelectedValue!="3")//diversa da straordinaria
+			{
+				txtImp1.Text="";
+				txtImp1_1.Text="";
+				txtImp2.Text="";
+				txtImp2_1.Text=""; 
+				txtPercentuale1.Text="";
+				txtPercentuale2.Text="";
+				
+			}
 			p = new S_Object();
 			p.ParameterName = "p_tipointervento";
 			p.DbType = CustomDBType.Integer;
@@ -2578,7 +2994,8 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Index = _SColl.Count;
 			p.Value =int.Parse(cmbsTipoIntrevento.SelectedValue);  
 			_SColl.Add(p);
-		
+			
+
 			p = new S_Object();
 			p.ParameterName = "p_note";
 			p.DbType = CustomDBType.VarChar;
@@ -2587,9 +3004,11 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Size=408;
 			p.Value =txtNoteSga.Text; 
 			_SColl.Add(p);
-		
-		
-			// URGENZA
+
+	
+			//_SColl=GetParamEmissione(_SColl);
+			
+			//S_Controls.Collections.S_Object p = new S_Object();
 			p = new S_Object();
 			p.ParameterName = "p_urgenza";
 			p.DbType = CustomDBType.Integer;
@@ -2608,82 +3027,100 @@ namespace TheSite.ManutenzioneCorrettiva
 			else
 				p.Value =int.Parse(cmbsAddetto.SelectedValue);
 			_SColl.Add(p);
-
-//			// ID_DITTA
-//			p = new S_Object();
-//			p.ParameterName = "p_id_ditta";
-//			p.DbType = CustomDBType.Integer;
-//			p.Direction = ParameterDirection.Input;
-//			p.Index = _SColl.Count;
-//			p.Value = (cmbsDitta.SelectedValue=="")?0:int.Parse(cmbsDitta.SelectedValue);
-//			_SColl.Add(p);
-//		
 			
-		
+			
+			// DATAPIANIFICATA
 			p = new S_Object();
-			p.ParameterName = "p_date_start";
+			p.ParameterName = "p_datapianificata";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;			
+			p.Size=30;
+
+			//Data Pianificata	
+			string data_pianificata="";
+			string data_p=CalendarPicker6.Datazione.Text;
+			if(data_p!="")
+			{ 
+				string ora_p= ((cmbOra1.SelectedValue=="")?"00":cmbOra1.SelectedValue) + ":" + ((cmbMin2.SelectedValue=="")?"00":cmbMin2.SelectedValue) + ":00";
+				data_pianificata = data_p + " " + ora_p;  
+			}
+			p.Value = data_pianificata;
+			_SColl.Add(p);
+
+			// ID_DITTA
+			p = new S_Object();
+			p.ParameterName = "p_id_ditta";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			p.Value = (cmbsDitta.SelectedValue=="")?0:int.Parse(cmbsDitta.SelectedValue);
+			_SColl.Add(p);
+
+					
+			// NR PREVENTIVO
+			p = new S_Object();
+			p.ParameterName = "p_numeropreventivo";
 			p.DbType = CustomDBType.VarChar;
 			p.Direction = ParameterDirection.Input;
 			p.Index = _SColl.Count;
-			string data_start=string.Empty; 
-			data_start=CalendarPicker7.Datazione.Text;
-			if(data_start!="")
-			{ 
-				string ora_ini=((OraIni.SelectedValue=="")?"00":OraIni.SelectedValue) + ":" + ((MinitiIni.SelectedValue=="")?"00":MinitiIni.SelectedValue) + ":00";
-				data_start += " " + ora_ini;  
-			}
-			if(data_start!="")
-				p.Value =data_start;
-			else
-				p.Value =DBNull.Value;
+			p.Size=20;
+			p.Value =TxtNumPreventivo.Text;
 			_SColl.Add(p);
 
+			//IMPORTO PREVENTIVO
 			p = new S_Object();
-			p.ParameterName = "p_date_end";
+			p.ParameterName = "p_importopreventivo";
+			p.DbType = CustomDBType.Double;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;
+			if(txtImpPrev1.Text=="") 
+				p.Value =0;
+			else
+				p.Value =double.Parse(txtImpPrev1.Text + "," + txtImpPrev2.Text);  
+			_SColl.Add(p);
+
+
+			
+			// DATA SOPRALLUOGO 5
+			p = new S_Object();
+			p.ParameterName = "p_datapsopralluogo";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Index = _SColl.Count;			
+			p.Size=30;
+						
+			string data_sopralluogo5="";
+			string data_s5=CalendarPicker5.Datazione.Text;
+			if(data_s5!="")
+			{ 
+				string ora_s5= ((S_COMBOBOX6.SelectedValue=="")?"00":S_COMBOBOX6.SelectedValue) + ":" + ((S_COMBOBOX5.SelectedValue=="")?"00":S_COMBOBOX5.SelectedValue) + ":00";
+				data_sopralluogo5 = data_s5 + " " + ora_s5;  
+			}
+			p.Value = data_sopralluogo5;
+			_SColl.Add(p);
+		   // NOTE SOPRALLUOGO
+
+			p = new S_Object();
+			p.ParameterName = "p_note_sopralluogo";
 			p.DbType = CustomDBType.VarChar;
 			p.Direction = ParameterDirection.Input;
 			p.Index = _SColl.Count;
-			string data_end=string.Empty; 
-			data_end=CalendarPicker8.Datazione.Text;
-			if(data_end!="")
-			{ 
-				string ora_end=((OraFine.SelectedValue=="")?"00":OraFine.SelectedValue) + ":" + ((MinutiFine.SelectedValue=="")?"00":MinutiFine.SelectedValue) + ":00";
-				data_end += " " + ora_end;  
-			}
-			if(data_end!="")
-				p.Value =data_end;
-			else
-				p.Value =DBNull.Value;
+			p.Size =256;
+			p.Value =txtSeguito4.Text;
 			_SColl.Add(p);
 
-			p = new S_Object();
-			p.ParameterName = "p_date_est_completion";
-			p.DbType = CustomDBType.VarChar;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			string date_est_completion=string.Empty; 
-			date_est_completion=CalendarPicker10.Datazione.Text;
-			if(date_est_completion!="")
-			{ 
-				string ora_ini=((S_COMBOBOX2.SelectedValue=="")?"00":S_COMBOBOX2.SelectedValue) + ":" + ((S_COMBOBOX1.SelectedValue=="")?"00":S_COMBOBOX1.SelectedValue) + ":00";
-				date_est_completion += " " + ora_ini;  
-			}
-			if(date_est_completion!="")
-				p.Value =date_est_completion;
-			else
-				p.Value =DBNull.Value;
-			_SColl.Add(p);
-
-
+			
 			p = new S_Object();
 			p.ParameterName = "p_comments";
 			p.DbType = CustomDBType.VarChar;
 			p.Direction = ParameterDirection.Input;
 			p.Index = _SColl.Count;
 			p.Size =256;
-			p.Value =cmbDescrizioneIntervento.Text;
+			p.Value =txtSeguito4.Text;
 			_SColl.Add(p);
-
+			
+			
 			p = new S_Object();
 			p.ParameterName = "p_ca_id";
 			p.DbType = CustomDBType.VarChar;
@@ -2711,13 +3148,7 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Value =txtsAnnotazioni.Text;
 			_SColl.Add(p);
 
-			p = new S_Object();
-			p.ParameterName = "P_DISSERVIZIO";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Value =(CkDisser.Checked==true)?1:0;
-			_SColl.Add(p);
+		
 
 			p = new S_Object();
 			p.ParameterName = "P_DIE_TIPO_INTERVENTO";
@@ -2727,47 +3158,10 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Value =cmbStatoIntervento.SelectedValue;
 			_SColl.Add(p);
 
+			
+		
 
-			p = new S_Object();
-			p.ParameterName = "P_DIE_COSTO_MATERIALE";
-			p.DbType = CustomDBType.Double;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			//			p.Value =DBNull.Value;
-			//			_SColl.Add(p);
-
-			if(txtCostiMateriali1.Text=="")
-				p.Value =DBNull.Value;
-			else
-				p.Value =double.Parse(txtCostiMateriali1.Text + "," + txtCostiMateriali2.Text); 
-			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "P_DIE_COSTO_PERSONALE";
-			p.DbType = CustomDBType.Double;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			//			p.Value =DBNull.Value;
-			//			_SColl.Add(p);
-			if(txtCostiPersonale1.Text=="")
-				p.Value =DBNull.Value;
-			else
-				p.Value =double.Parse(txtCostiPersonale1.Text + "," + txtCostiPersonale2.Text); 
-			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "P_DIE_COSTO_TOTALE";
-			p.DbType = CustomDBType.Double;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			//			p.Value =DBNull.Value;
-			//			_SColl.Add(p);
-			if(txtCostiTotale1.Text=="")
-				p.Value =DBNull.Value;
-			else
-				p.Value =double.Parse(txtCostiTotale1.Text + "," + txtCostiTotale2.Text); 
-			_SColl.Add(p);
-
+			
 			// Aggiunto da Andrea   Importo a consuntivo
 			p= new S_Object();
 			p.ParameterName ="P_DIE_IMP_CONSUNTIVO";
@@ -2790,54 +3184,8 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Value =txtNoteCompletamento.Text; 
 			_SColl.Add(p);
 
-			
+					
 
-			p = new S_Object();
-			p.ParameterName = "P_FORFAIT";
-			p.DbType = CustomDBType.Integer;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			if(OptAForfait.Checked==true)
-				p.Value =1; //Importo a forfait
-			else
-				p.Value =0; 
-			_SColl.Add(p);
-
-
-			p = new S_Object();
-			p.ParameterName = "P_FORFAIT_NOTE";
-			p.DbType = CustomDBType.VarChar;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Size=250;
-			p.Value =TxtAForfait.Text; 
-			//						if(OptAForfait.Checked) 
-			//						
-			//		     else
-			//			p.Value =DBNull.Value;
-			_SColl.Add(p);
-
-			// NR PREVENTIVO
-			p = new S_Object();
-			p.ParameterName = "p_numeropreventivo";
-			p.DbType = CustomDBType.VarChar;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			p.Size=20;
-			p.Value =TxtNumPreventivo.Text;
-			_SColl.Add(p);
-
-			//IMPORTO PREVENTIVO
-			p = new S_Object();
-			p.ParameterName = "p_importopreventivo";
-			p.DbType = CustomDBType.Double;
-			p.Direction = ParameterDirection.Input;
-			p.Index = _SColl.Count;
-			if(txtImpPrev1.Text=="") 
-				p.Value =0;
-			else
-				p.Value =double.Parse(txtImpPrev1.Text + "," + txtImpPrev2.Text);  
-			_SColl.Add(p);
 
 			p = new S_Object();
 			p.ParameterName = "p_stato";
@@ -2846,38 +3194,31 @@ namespace TheSite.ManutenzioneCorrettiva
 			p.Index = _SColl.Count;
 			p.Value =cmbsstatolavoro.SelectedValue; 
 			_SColl.Add(p);
-			
+
+						
 			p = new S_Object();
 			p.ParameterName = "p_idcontabilizzazione";
 			p.DbType = CustomDBType.Integer;
 			p.Direction = ParameterDirection.Input;
-			p.Size=100;
 			p.Index = _SColl.Count;
-			p.Value =cmbCdC.SelectedValue;
+			//p.Value = (cmbCdC.SelectedValue=="")?0:int.Parse(cmbCdC.SelectedValue);
+			if (cmbCdC.SelectedValue=="")
+			p.Value = DBNull.Value;
+			else
+			p.Value = cmbCdC.SelectedValue;	//p.Value =cmbCdC.SelectedValue;
 			_SColl.Add(p);
-
-			p = new S_Object();
-			p.ParameterName = "p_nr_ord";
-			p.DbType = CustomDBType.VarChar;
-			p.Direction = ParameterDirection.Input;
-			p.Size=100;
-			p.Index = _SColl.Count;
-			p.Value =txtord.Text;
-			_SColl.Add(p);
-
 			
 			p = new S_Object();
-			p.ParameterName = "p_a1_b1";
+			p.ParameterName = "p_nr_consuntivo";
 			p.DbType = CustomDBType.VarChar;
 			p.Direction = ParameterDirection.Input;
-			p.Size=2;
 			p.Index = _SColl.Count;
-			p.Value = S_tipintervento.SelectedValue; 
+			p.Size=250;
+			p.Value =txtnrconsuntivo.Text; 
 			_SColl.Add(p);
 
-
-
-			int result= _ClManCorrettiva.Completamentonew_rev2(_SColl); 
+					
+			int result= _ClManCorrettiva.Completamentonew_rev1(_SColl); 
 			//LoadDati();
 
 		}
@@ -2886,35 +3227,33 @@ namespace TheSite.ManutenzioneCorrettiva
 		{
 			
 			
-			// controllo ruolo-utente livello autorizzazione 1 e 2 messaggio negativo
-			string scriptString="";
-			TheSite.Classi.ManStraordinaria.ManCorrettivaPaging _Manc1= new TheSite.Classi.ManStraordinaria.ManCorrettivaPaging();
-			string msgAut=_Manc1.CKPREVAUT(Context.User.Identity.Name);
-			if (msgAut!="")
+//			// controllo ruolo-utente livello autorizzazione 1 e 2 messaggio negativo
+//			string scriptString="";
+//			TheSite.Classi.ManStraordinaria.ManCorrettivaPaging _Manc1= new TheSite.Classi.ManStraordinaria.ManCorrettivaPaging();
+//			string msgAut=_Manc1.CKPREVAUT(Context.User.Identity.Name);
+//			if (msgAut!="")
+//			
+//			{
+//				scriptString= "<script language=\"JavaScript\">alert(\"" + msgAut + "\");<";
+//				scriptString += "/";
+//				scriptString += "script>";
+//				this.RegisterStartupScript("Startup2", scriptString);
+//				return;
+//				
+//			}
+//			//controllo autorizzazione RDL già effettuata messaggio negativo
+//			
+//			string msg=_Manc1.CKStatusAut(wr_id, int.Parse(cmbsTipoManutenzione.SelectedValue));
+//			if (msg!="")
+//			{
+//				scriptString= "<script language=\"JavaScript\">alert(\"" + msg + "\");<";
+//				scriptString += "/";
+//				scriptString += "script>";
+//				this.RegisterStartupScript("Startup2", scriptString);
+//				return;
+//			
+//			}
 			
-			{
-				scriptString= "<script language=\"JavaScript\">alert(\"" + msgAut + "\");<";
-				scriptString += "/";
-				scriptString += "script>";
-				this.RegisterStartupScript("Startup2", scriptString);
-				return;
-				
-			}
-			//controllo autorizzazione RDL già effettuata messaggio negativo
-			
-			string msg=_Manc1.CKStatusAut(wr_id, int.Parse(cmbsTipoManutenzione.SelectedValue));
-			if (msg!="")
-			{
-				scriptString= "<script language=\"JavaScript\">alert(\"" + msg + "\");<";
-				scriptString += "/";
-				scriptString += "script>";
-				this.RegisterStartupScript("Startup2", scriptString);
-				return;
-			
-			}
-			
-
-
 			SaveDocumentPreventivo();
 
 		}
@@ -3318,10 +3657,8 @@ namespace TheSite.ManutenzioneCorrettiva
 			if (_MyDs.Tables[0].Rows.Count > 0)
 			{
 					
-//				this.cmbCdC.DataSource = Classi.GestoreDropDownList.ItemBlankDataSource(
-//					_MyDs.Tables[0], "DESCRIZIONE", "ID", "Non Definito", "0");
-				
-				this.cmbCdC.DataSource=_MyDs.Tables[0];
+				this.cmbCdC.DataSource = Classi.GestoreDropDownList.ItemBlankDataSource(
+					_MyDs.Tables[0], "DESCRIZIONE", "ID", "Non Definito", "0");
 				this.cmbCdC.DataTextField = "DESCRIZIONE";
 				this.cmbCdC.DataValueField = "ID";
 				this.cmbCdC.DataBind();
@@ -3335,82 +3672,157 @@ namespace TheSite.ManutenzioneCorrettiva
 
 		}
 
-		private void btFoglio_Click(object sender, System.EventArgs e)
+		private void btn_S_Hlav_Click(object sender, System.EventArgs e)
 		{
-			string url = System.Configuration.ConfigurationSettings.AppSettings["linkReportPermessoLavoro"];
-			string url_tot = string.Format("{0}?RdLId={1}",url,wr_id);// "http://pempr1.cofasir.it/GetPL.aspx?RdLId="+wr_id
-			//url_tot ="http://pt.cofasir.it/GetPL1.aspx?RdLId=464";
-			Response.Redirect(url_tot);
+			S_ControlsCollection _SColl = new S_ControlsCollection();
+			S_Controls.Collections.S_Object p_wr_id = new S_Object();
+			
+			p_wr_id.ParameterName = "p_wr_id";
+			p_wr_id.DbType = CustomDBType.Integer;
+			p_wr_id.Direction = ParameterDirection.Input;
+			p_wr_id.Index = _SColl.Count;			 
+			p_wr_id.Value =wr_id;
+			_SColl.Add(p_wr_id);
+			
+			
+			S_Controls.Collections.S_Object p_date_start = new S_Object();
+			p_date_start.ParameterName = "p_date_start";
+			p_date_start.DbType = CustomDBType.VarChar;
+			p_date_start.Direction = ParameterDirection.Input;
+			p_date_start.Index = _SColl.Count;
+			p_date_start.Size=30;
+			string data_start=string.Empty; 
+			data_start=CalendarPicker7.Datazione.Text;
+			if(data_start!="")
+			{ 
+				string ora_ini=((OraIni.SelectedValue=="")?"00":OraIni.SelectedValue) + ":" + ((MinitiIni.SelectedValue=="")?"00":MinitiIni.SelectedValue) + ":00";
+				data_start += " " + ora_ini;  
+			}
+			if(data_start!="")
+				p_date_start.Value =data_start;
+			else
+				p_date_start.Value =DBNull.Value;
+			_SColl.Add(p_date_start);
+
+			S_Controls.Collections.S_Object p_date_end = new S_Object();
+			p_date_end.ParameterName = "p_date_end";
+			p_date_end.DbType = CustomDBType.VarChar;
+			p_date_end.Direction = ParameterDirection.Input;
+			p_date_end.Index = _SColl.Count;
+			p_date_end.Size=30;
+			string data_end=string.Empty; 
+			data_end=CalendarPicker8.Datazione.Text;
+			if(data_end!="")
+			{ 
+				string ora_end=((OraFine.SelectedValue=="")?"00":OraFine.SelectedValue) + ":" + ((MinutiFine.SelectedValue=="")?"00":MinutiFine.SelectedValue) + ":00";
+				data_end += " " + ora_end;  
+			}
+			if(data_end!="")
+				p_date_end.Value =data_end;
+			else
+				p_date_end.Value =DBNull.Value;
+			_SColl.Add(p_date_end);
+
+			S_Controls.Collections.S_Object p_date_est_completion = new S_Object();
+			p_date_est_completion.ParameterName = "p_date_est_completion";
+			p_date_est_completion.DbType = CustomDBType.VarChar;
+			p_date_est_completion.Direction = ParameterDirection.Input;
+			p_date_est_completion.Size=30;
+			p_date_est_completion.Index = _SColl.Count;
+			string date_est_completion=string.Empty; 
+			date_est_completion=CalendarPicker10.Datazione.Text;
+			if(date_est_completion!="")
+			{ 
+				string ora_ini=((S_COMBOBOX2.SelectedValue=="")?"00":S_COMBOBOX2.SelectedValue) + ":" + ((S_COMBOBOX1.SelectedValue=="")?"00":S_COMBOBOX1.SelectedValue) + ":00";
+				date_est_completion += " " + ora_ini;  
+			}
+			if(date_est_completion!="")
+				p_date_est_completion.Value =date_est_completion;
+			else
+				p_date_est_completion.Value =DBNull.Value;
+			_SColl.Add(p_date_est_completion);
+
+			S_Controls.Collections.S_Object p_note_aggiuntive= new S_Object();
+			p_note_aggiuntive.ParameterName = "p_note_aggiuntive";
+			p_note_aggiuntive.DbType = CustomDBType.VarChar;
+			p_note_aggiuntive.Direction = ParameterDirection.Input;
+			p_note_aggiuntive.Index = _SColl.Count;
+			p_note_aggiuntive.Size=255;
+			p_note_aggiuntive.Value=txtNoteAggiuntive.Text;
+			_SColl.Add(p_note_aggiuntive);
+
+			int result= _ClManCorrettiva.InsHRdl(_SColl);
+
+			txtNoteAggiuntive.Text="";
+			CalendarPicker10.Datazione.Text="";
+			CalendarPicker7.Datazione.Text="";
+			CalendarPicker8.Datazione.Text="";
+			S_COMBOBOX2.SelectedValue="00";
+			S_COMBOBOX1.SelectedValue="00";
+			OraFine.SelectedValue="00";
+			MinutiFine.SelectedValue="00";
+			OraIni.SelectedValue="00";
+			MinitiIni.SelectedValue="00";
+			LoadHLAV();
+			
+
 		}
 
-		private void Repeater1_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
-		{
-		if(e.Item.ItemType ==ListItemType.Item ||   e.Item.ItemType ==ListItemType.AlternatingItem)
-			{
-//				string filename= ((DataRowView)e.Item.DataItem)["NOME_DOC"].ToString();  
-//				string destDir =  "../Doc_DB/" +  txtHidBl.Text + "/" + this.wr_id.ToString() + "/" +filename;
-//				Label lbl=	e.Item.FindControl("lbln") as Label;
-//				lbl.Text="<a href=\"" + destDir + "\" target=\"_blank\">" + filename +"</a>";
-//
-//				ImageButton bt=e.Item.FindControl("delete") as ImageButton; 
-//				bt.Attributes.Add("onclick", "return deletedoc();");
-		}
-		}
-
-		private void Repeater2_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
-		{
-			if(e.Item.ItemType ==ListItemType.Item ||   e.Item.ItemType ==ListItemType.AlternatingItem)
-			{}
-		}
-
-		private void Repeater3_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
-		{
-			if(e.Item.ItemType ==ListItemType.Item ||   e.Item.ItemType ==ListItemType.AlternatingItem)
-			{}
-		}
-
-		private void Button1_Click(object sender, System.EventArgs e)
+		private void Button2_Click(object sender, System.EventArgs e)
 		{
 			Chiudi();
-		}
-		private void LoadMacroArea()
-		{
-			this.S_macroarea.Items.Clear();		
-		    
-
-			DataSet _MyDs = _ClManCorrettiva.GetMacroArea();
-
-			if (_MyDs.Tables[0].Rows.Count > 0)
-			{
-				this.S_macroarea.DataSource = Classi.GestoreDropDownList.ItemBlankDataSource(
-					_MyDs.Tables[0], "descrizione", "id", "- Selezionare la MacroArea -", "");
-				this.S_macroarea.DataTextField = "descrizione";
-				this.S_macroarea.DataValueField = "id";
-				this.S_macroarea.DataBind();   
-
-			}
-			else
-			{
-				string s_Messagggio = "- Nessuna MacroArea  -";
-				this.S_macroarea.Items.Add(Classi.GestoreDropDownList.ItemMessaggio(s_Messagggio, String.Empty));
-			}
 		}
 
 		private void cmbsServizio_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			LoadStandardApparechiature();
 			//LoadApparechiature();			
-			//ImpostaPriority(Int32.Parse(cmbsServizio.SelectedValue));
-			LoadAddettiDitta(RicercaModulo1.TxtCodice.Text, Int32.Parse(cmbsServizio.SelectedValue));
+			ImpostaPriority(Int32.Parse(cmbsServizio.SelectedValue));
+			LoadAddettiDitta(txtHidBl.Text,int.Parse(this.cmbsDitta.SelectedValue), Int32.Parse(cmbsServizio.SelectedValue));
 			//da caricare sempre
 			BindCdC(Int32.Parse(cmbsServizio.SelectedValue));
+		}
+
+		private void ImpostaPriority(int id_servizio)
+		{
+			int cod= Convert.ToInt32(hidBl_id.Value);
+
+			Classi.ClassiDettaglio.Urgenza _Urgenza = new TheSite.Classi.ClassiDettaglio.Urgenza();
+			this.cmbsUrgenza.DataSource = _Urgenza.GetPrioritablsv(cod, id_servizio);
+			this.cmbsUrgenza.DataTextField = "DESCRIPTION";
+			this.cmbsUrgenza.DataValueField = "ID";
+			this.cmbsUrgenza.DataBind();
 		}
 
 		private void cmdsStdApparecchiatura_SelectedIndexChanged(object sender, System.EventArgs e)
 		{
 			LoadApparechiature();
+			
+
 		}
-	
+
+		private void Button3_Click(object sender, System.EventArgs e)
+		{
+//			string url = System.Configuration.ConfigurationSettings.AppSettings["linkReportPermessoLavoro"];
+//			string url_tot = string.Format("{0}?RdLId={1}",url,wr_id);// "http://pempr1.cofasir.it/GetPL.aspx?RdLId="+wr_id
+//			//url_tot ="http://pt.cofasir.it/GetPL1.aspx?RdLId=464";
+//			Response.Redirect(url_tot);
+		
+		ScriptRapportoTecnicoPdf1(int.Parse(LblOrdine.Text.Trim()));
+		
+		}
+
+		
+		private void ScriptRapportoTecnicoPdf1(int wo_id)
+		{
+			string pagina="RapportoTecnicoInterventoPdf1.aspx?WO_Id=" + wo_id.ToString();
+			string s_TestataScript = "<script language=\"javascript\">\n";
+			string funz="ApriPopUp('"+ pagina +"')";
+			string s_CodaScript = "</script>\n";
+			string funzione=s_TestataScript + funz + s_CodaScript;
+			this.Page.RegisterStartupScript("funz",funzione);
+		}
+
 		
 
 

@@ -8,6 +8,7 @@ using S_Controls;
 using S_Controls.Collections;
 using ApplicationDataLayer;
 using ApplicationDataLayer.DBType;
+using System.Data.OracleClient;
 
 namespace TheSite.Classi.ManCorrettiva
 {
@@ -60,38 +61,6 @@ namespace TheSite.Classi.ManCorrettiva
 			return _Ds;	
 		}
 		/// <summary>
-		///  ottien la lista dell'anagrafica materiali per riempire le combo
-		/// </summary>
-		/// <returns>dataset</returns>
-		public DataSet getBindComboManodopera(int _wrId)
-		{
-			DataSet _Ds;	
-			int cntParametri = 0;
-			S_ControlsCollection CollezioneControlli = new S_ControlsCollection();
-			
-			S_Controls.Collections.S_Object s_p_Wr_Id = new S_Controls.Collections.S_Object();
-			s_p_Wr_Id.ParameterName = "p_Wr_Id";
-			s_p_Wr_Id.DbType = ApplicationDataLayer.DBType.CustomDBType.Integer;
-			s_p_Wr_Id.Direction = ParameterDirection.Input;
-			s_p_Wr_Id.Index = 2;
-			s_p_Wr_Id.Size=50;
-			s_p_Wr_Id.Value = _wrId;		
-			CollezioneControlli.Add(s_p_Wr_Id);
-			
-			S_Object pCursor = new S_Object();
-			pCursor.ParameterName = "IO_CURSOR";
-			pCursor.DbType = CustomDBType.Cursor;
-			pCursor.Direction = ParameterDirection.Output;
-			pCursor.Index = cntParametri++;
-			CollezioneControlli.Add(pCursor);			
-
-			string s_StrSql = "Pack_CostiOperativiGestione.BindAddettiwr";
-			_Ds = _OraDl.GetRows(CollezioneControlli, s_StrSql).Copy();			
-			return _Ds;
-		}
-		
-		
-		/// <summary>
 		/// ottiene il dataset con la lista dei materiali impiegati
 		/// </summary>
 		/// <param name="wrId"></param>
@@ -122,8 +91,6 @@ namespace TheSite.Classi.ManCorrettiva
 			return _Ds;
 		}
 
-		
-		
 		public DataSet getMateriali(string desc)
 		{
 			DataSet _Ds;	
@@ -323,7 +290,7 @@ namespace TheSite.Classi.ManCorrettiva
 		///  ottien la lista dell'anagrafica materiali per riempire le combo
 		/// </summary>
 		/// <returns>dataset</returns>
-		public DataSet getBindComboManodopera()
+		public DataSet getBindComboManodopera(int wr_id)
 		{
 			DataSet _Ds;	
 			int cntParametri = 0;
@@ -344,26 +311,6 @@ namespace TheSite.Classi.ManCorrettiva
 		/// Ottine la lista delle contabilizzazioni
 		/// </summary>
 		/// <returns></returns>
-		
-		public  DataSet GetMacroArea()
-		{
-			
-			S_ControlsCollection CollezioneControlli=new S_ControlsCollection();
-
-			S_Controls.Collections.S_Object s_Cursor = new S_Object();
-			s_Cursor.ParameterName = "IO_CURSOR";
-			s_Cursor.DbType = CustomDBType.Cursor;
-			s_Cursor.Direction = ParameterDirection.Output;
-			s_Cursor.Index = CollezioneControlli.Count ;
-
-			CollezioneControlli.Add(s_Cursor);
-
-			string s_StrSql = "PACK_MAN_ORD.SP_GETMACROAREA";	
-			DataSet _Ds = _OraDl.GetRows(CollezioneControlli, s_StrSql).Copy();			
-
-			return _Ds;	
-		}
-		
 		public  DataSet GetContabilizzazione()
 		{
 			
@@ -387,40 +334,6 @@ namespace TheSite.Classi.ManCorrettiva
 		/// </summary>
 		/// <param name="wr_id"></param>
 		/// <returns></returns>
-		
-		public DataSet GetAddetti_NODITTA(int servizi_id)
-		{
-			S_ControlsCollection _SCollection = new S_ControlsCollection();	
-		
-			S_Controls.Collections.S_Object s_p_servizi_ID = new S_Controls.Collections.S_Object();
-			s_p_servizi_ID.ParameterName = "p_servizi_id";
-			s_p_servizi_ID.DbType = ApplicationDataLayer.DBType.CustomDBType.VarChar;
-			s_p_servizi_ID.Direction = ParameterDirection.Input;
-			s_p_servizi_ID.Size =50;
-			s_p_servizi_ID.Index = 0;
-			s_p_servizi_ID.Value = servizi_id;
-			_SCollection.Add(s_p_servizi_ID);	
-
-			S_Controls.Collections.S_Object s_Cursor = new S_Object();
-			s_Cursor.ParameterName = "IO_CURSOR";
-			s_Cursor.DbType = CustomDBType.Cursor;
-			s_Cursor.Direction = ParameterDirection.Output;
-			s_Cursor.Index = 1;
-
-			_SCollection.Add(s_Cursor);
-			
-			DataSet _Ds;											
-
-			string s_StrSql = "PACK_ADDETTI.SP_GETADDETTORUOLOCORR_NODITTA";	
-			_Ds = _OraDl.GetRows(_SCollection, s_StrSql).Copy();			
-
-			return _Ds;		
-		}
-		
-		
-		
-		
-		
 		public  DataSet GetStatusRdl(int wr_id)
 		{	
 			DataSet _Ds;	
@@ -471,6 +384,28 @@ namespace TheSite.Classi.ManCorrettiva
 
 			return _Ds;	
 		}
+
+		public  DataSet GetMacroArea()
+		{
+			
+			S_ControlsCollection CollezioneControlli=new S_ControlsCollection();
+
+			S_Controls.Collections.S_Object s_Cursor = new S_Object();
+			s_Cursor.ParameterName = "IO_CURSOR";
+			s_Cursor.DbType = CustomDBType.Cursor;
+			s_Cursor.Direction = ParameterDirection.Output;
+			s_Cursor.Index = CollezioneControlli.Count ;
+
+			CollezioneControlli.Add(s_Cursor);
+
+			string s_StrSql = "PACK_MAN_ORD.SP_GETMACROAREA";	
+			DataSet _Ds = _OraDl.GetRows(CollezioneControlli, s_StrSql).Copy();			
+
+			return _Ds;	
+		}
+
+
+
 		/// <summary>
 		/// Restituisce l'elenco o il singolo addetto in base una ditta ed ad un edificio
 		/// </summary>
@@ -505,7 +440,7 @@ namespace TheSite.Classi.ManCorrettiva
 			s_p_DITTA_ID.Direction = ParameterDirection.Input;
 			s_p_DITTA_ID.Size =50;
 			s_p_DITTA_ID.Index = 2;
-			s_p_DITTA_ID.Value = ditta_id;
+			s_p_DITTA_ID.Value = 0;
 			_SCollection.Add(s_p_DITTA_ID);	
 		
 			S_Controls.Collections.S_Object s_p_servizi_ID = new S_Controls.Collections.S_Object();
@@ -544,68 +479,23 @@ namespace TheSite.Classi.ManCorrettiva
 			return _Ds;		
 		}
 		
-		public DataSet GetAddetti_data(string NomeCompleto, string BL_ID, int servizi_id, int wr_id)
+		public DataSet GetAddettiDitte()
 		{
 			S_ControlsCollection _SCollection = new S_ControlsCollection();			
 		
-			S_Controls.Collections.S_Object s_p_NomeCompleto = new S_Controls.Collections.S_Object();
-			s_p_NomeCompleto.ParameterName = "p_NomeCompleto";
-			s_p_NomeCompleto.DbType = ApplicationDataLayer.DBType.CustomDBType.VarChar;
-			s_p_NomeCompleto.Direction = ParameterDirection.Input;
-			s_p_NomeCompleto.Size =50;	
-			s_p_NomeCompleto.Index = 0;
-			s_p_NomeCompleto.Value = NomeCompleto;	
-			_SCollection.Add(s_p_NomeCompleto);			
-
-			S_Controls.Collections.S_Object s_p_BL_ID = new S_Controls.Collections.S_Object();
-			s_p_BL_ID.ParameterName = "p_bl_id";
-			s_p_BL_ID.DbType = ApplicationDataLayer.DBType.CustomDBType.VarChar;
-			s_p_BL_ID.Direction = ParameterDirection.Input;
-			s_p_BL_ID.Size =50;
-			s_p_BL_ID.Index = 1;
-			s_p_BL_ID.Value = BL_ID;
-			_SCollection.Add(s_p_BL_ID);			
-
-			S_Controls.Collections.S_Object s_p_wr_id = new S_Controls.Collections.S_Object();
-			s_p_wr_id.ParameterName = "p_wr_id";
-			s_p_wr_id.DbType = ApplicationDataLayer.DBType.CustomDBType.Integer;
-			s_p_wr_id.Direction = ParameterDirection.Input;
-			s_p_wr_id.Size =50;
-			s_p_wr_id.Index = 2;
-			s_p_wr_id.Value = wr_id;
-			_SCollection.Add(s_p_wr_id);
-			
-			
 		
-			S_Controls.Collections.S_Object s_p_servizi_ID = new S_Controls.Collections.S_Object();
-			s_p_servizi_ID.ParameterName = "p_servizi_id";
-			s_p_servizi_ID.DbType = ApplicationDataLayer.DBType.CustomDBType.Integer;
-			s_p_servizi_ID.Direction = ParameterDirection.Input;
-			s_p_servizi_ID.Size =50;
-			s_p_servizi_ID.Index = 4;
-			s_p_servizi_ID.Value = servizi_id;
-			_SCollection.Add(s_p_servizi_ID);	
-
-			S_Controls.Collections.S_Object s_p_UserName = new S_Controls.Collections.S_Object();
-			s_p_UserName.ParameterName = "p_UserName";
-			s_p_UserName.DbType = ApplicationDataLayer.DBType.CustomDBType.VarChar;
-			s_p_UserName.Direction = ParameterDirection.Input;
-			s_p_UserName.Size =50;
-			s_p_UserName.Index = 5;
-			s_p_UserName.Value = System.Web.HttpContext.Current.User.Identity.Name;
-			_SCollection.Add(s_p_UserName);
 
 			S_Controls.Collections.S_Object s_Cursor = new S_Object();
 			s_Cursor.ParameterName = "IO_CURSOR";
 			s_Cursor.DbType = CustomDBType.Cursor;
 			s_Cursor.Direction = ParameterDirection.Output;
-			s_Cursor.Index = 6;
+			s_Cursor.Index = 0;
 
 			_SCollection.Add(s_Cursor);
 			
 			DataSet _Ds;											
 
-			string s_StrSql = "PACK_ADDETTI.SP_GETADDETTORUOLOCORR_WR1";	
+			string s_StrSql = "PACK_MAN_ORD.SP_GETADDETTO";	
 			_Ds = _OraDl.GetRows(_SCollection, s_StrSql).Copy();			
 
 			return _Ds;		
@@ -1008,58 +898,6 @@ namespace TheSite.Classi.ManCorrettiva
 
 			return _Ds;				
 		}
-		public  DataSet GetPiani()
-		{			
-			DataSet _Ds;
-			
-			S_ControlsCollection CollezioneControlli = new S_ControlsCollection();
-
-			S_Controls.Collections.S_Object s_Cursor = new S_Object();
-			s_Cursor.ParameterName = "IO_CURSOR";
-			s_Cursor.DbType = CustomDBType.Cursor;
-			s_Cursor.Direction = ParameterDirection.Output;
-			s_Cursor.Index = CollezioneControlli.Count;
-
-			CollezioneControlli.Add(s_Cursor);
-
-			ApplicationDataLayer.OracleDataLayer _OraDl = new OracleDataLayer(s_ConnStr);
-			string s_StrSql = "PACK_MAN_ORD.SP_GetPiani";	
-			_Ds = _OraDl.GetRows(CollezioneControlli, s_StrSql).Copy();			
-
-			return _Ds;				
-		}
-		
-		
-		public  DataSet GetPianibl(string id_bl)
-		{			
-			DataSet _Ds;
-			
-			S_ControlsCollection CollezioneControlli = new S_ControlsCollection();
-			
-			S_Controls.Collections.S_Object s_p_id_bl = new S_Object();
-			s_p_id_bl.ParameterName = "p_id_bl";
-			s_p_id_bl.DbType = CustomDBType.VarChar;
-			s_p_id_bl.Direction = ParameterDirection.Input;
-			s_p_id_bl.Value=id_bl;
-			s_p_id_bl.Index = CollezioneControlli.Count;
-			CollezioneControlli.Add(s_p_id_bl);
-            			
-			S_Controls.Collections.S_Object s_Cursor = new S_Object();
-			s_Cursor.ParameterName = "IO_CURSOR";
-			s_Cursor.DbType = CustomDBType.Cursor;
-			s_Cursor.Direction = ParameterDirection.Output;
-			s_Cursor.Index = CollezioneControlli.Count;
-
-			CollezioneControlli.Add(s_Cursor);
-
-			ApplicationDataLayer.OracleDataLayer _OraDl = new OracleDataLayer(s_ConnStr);
-			string s_StrSql = "PACK_MAN_ORD.SP_GETPIANIBL";	
-			_Ds = _OraDl.GetRows(CollezioneControlli, s_StrSql).Copy();			
-
-			return _Ds;				
-		}
-		
-
 
 		public  DataSet GetAseguito()
 		{			
@@ -1254,6 +1092,318 @@ namespace TheSite.Classi.ManCorrettiva
 
 			return _Ds;		
 		}
+		
+		public DataSet GetRDLAttEdile(int wr_id)
+		{
+			DataSet _Ds;		
+			
+			S_ControlsCollection CollezioneControlli = new  S_ControlsCollection();
+			
+			S_Controls.Collections.S_Object p = new S_Object();
+			p.ParameterName = "p_Wr_Id";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Value=wr_id;
+			p.Index = CollezioneControlli.Count;
+			CollezioneControlli.Add(p);
+			
+			p = new S_Object();
+			p.ParameterName = "IO_CURSOR";
+			p.DbType = CustomDBType.Cursor;
+			p.Direction = ParameterDirection.Output;
+			p.Index =CollezioneControlli.Count;
+			CollezioneControlli.Add(p);
+
+			string s_StrSql = "PACK_MANCORRETIVA_NUOVA.SP_GET_RDL_ATT_EDILE";	
+			_Ds = _OraDl.GetRows(CollezioneControlli, s_StrSql).Copy();			
+
+			return _Ds;		
+
+		}
+
+		public string insRDLAttEdile(int P_wr_id)
+		{
+				
+			string Result="";
+			string ConnectionString=ConfigurationSettings.AppSettings.Get("ConnectionString");
+			string s_StrSql = "PACK_MANCORRETIVA_NUOVA.INS_RDL_ATT_EDILE";
+			using(OracleConnection connection = new OracleConnection(ConnectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					using(OracleCommand command = new OracleCommand(s_StrSql,connection))
+					{
+						command.CommandType = System.Data.CommandType.StoredProcedure;
+
+						OracleParameter p1 = new OracleParameter("P_wr_id",OracleType.Number);
+						p1.Value     = P_wr_id;
+						p1.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p1);	
+
+						OracleParameter p2 = new OracleParameter("p_IdOut",OracleType.VarChar,100);
+						p2.Value     = "";
+						p2.Direction = System.Data.ParameterDirection.InputOutput;
+						command.Parameters.Add(p2);
+
+						command.ExecuteNonQuery();
+
+						Result=p2.Value.ToString();
+					}
+				}
+				finally
+				{
+					if(connection.State == ConnectionState.Open)
+					{
+						connection.Dispose();
+					}
+				}
+				return Result;
+			}
+
+		}
+
+		public string updRDLAttEdile(int P_wr_id, double v1, double v2, 
+		double v3,	double v4,double v5,double v6,double v7,double v8,
+		double v9,	double v10, double v11,double v12,double v13,
+		double v14,	double v15,int v16,double v17,double v18,double v19,
+		double v20,double v21,double v22,int v23
+			)
+		{
+				
+			string Result="";
+			string ConnectionString=ConfigurationSettings.AppSettings.Get("ConnectionString");
+			string s_StrSql = "PACK_MANCORRETIVA_NUOVA.UPD_RDL_ATT_EDILE";
+			using(OracleConnection connection = new OracleConnection(ConnectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					using(OracleCommand command = new OracleCommand(s_StrSql,connection))
+					{
+						command.CommandType = System.Data.CommandType.StoredProcedure;
+
+						OracleParameter p1 = new OracleParameter("P_wr_id",OracleType.Number);
+						p1.Value     = P_wr_id;
+						p1.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p1);	
+
+						OracleParameter p2 = new OracleParameter("p_v1",OracleType.Double);
+						p2.Value     = v1;
+						p2.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p2);	
+						
+						OracleParameter p3 = new OracleParameter("p_v2",OracleType.Double);
+						p3.Value     = v2;
+						p3.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p3);	
+
+						OracleParameter p4 = new OracleParameter("p_v3",OracleType.Double);
+						p4.Value     = v3;
+						p4.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p4);	
+						
+						OracleParameter p5 = new OracleParameter("p_v4",OracleType.Double);
+						p5.Value     = v4;
+						p5.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p5);	
+						
+						OracleParameter p6 = new OracleParameter("p_v5",OracleType.Double);
+						p6.Value     = v5;
+						p6.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p6);	
+						
+						OracleParameter p7 = new OracleParameter("p_v6",OracleType.Double);
+						p7.Value     = v6;
+						p7.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p7);
+						
+						OracleParameter p8 = new OracleParameter("p_v7",OracleType.Double);
+						p8.Value     = v7;
+						p8.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p8);
+						
+						OracleParameter p9 = new OracleParameter("p_v8",OracleType.Double);
+						p9.Value     = v8;
+						p9.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p9);
+
+						OracleParameter p10 = new OracleParameter("p_v9",OracleType.Double);
+						p10.Value     = v9;
+						p10.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p10);
+						
+						OracleParameter p11 = new OracleParameter("p_v10",OracleType.Double);
+						p11.Value     = v10;
+						p11.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p11);						
+						
+						OracleParameter p12 = new OracleParameter("p_v11",OracleType.Double);
+						p12.Value     = v11;
+						p12.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p12);
+						
+						OracleParameter p13 = new OracleParameter("p_v12",OracleType.Double);
+						p13.Value     = v12;
+						p13.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p13);
+
+						OracleParameter p14 = new OracleParameter("p_v13",OracleType.Double);
+						p14.Value     = v13;
+						p14.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p14);
+						
+						OracleParameter p15 = new OracleParameter("p_v14",OracleType.Double);
+						p15.Value     = v14;
+						p15.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p15);
+						
+						OracleParameter p16 = new OracleParameter("p_v15",OracleType.Double);
+						p16.Value     = v15;
+						p16.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p16);
+						
+						OracleParameter p17 = new OracleParameter("p_v16",OracleType.Number);
+						p17.Value     = v16;
+						p17.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p17);
+						
+						OracleParameter p18 = new OracleParameter("p_v17",OracleType.Double);
+						p18.Value     = v17;
+						p18.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p18);
+						
+						OracleParameter p19 = new OracleParameter("p_v18",OracleType.Double);
+						p19.Value     = v18;
+						p19.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p19);
+						
+						OracleParameter p20 = new OracleParameter("p_v19",OracleType.Double);
+						p20.Value     = v19;
+						p20.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p20);
+						
+						OracleParameter p21 = new OracleParameter("p_v20",OracleType.Double);
+						p21.Value     = v20;
+						p21.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p21);
+
+						OracleParameter p22 = new OracleParameter("p_v21",OracleType.Double);
+						p22.Value     = v21;
+						p22.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p22);
+						
+						OracleParameter p23 = new OracleParameter("p_v22",OracleType.Double);
+						p23.Value     = v22;
+						p23.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p23);
+						
+						OracleParameter p24 = new OracleParameter("p_v23",OracleType.Number);
+						p24.Value     = v23;
+						p24.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p24);
+
+						OracleParameter p25 = new OracleParameter("p_IdOut",OracleType.VarChar,100);
+						p25.Value     = "";
+						p25.Direction = System.Data.ParameterDirection.InputOutput;
+						command.Parameters.Add(p25);
+
+						command.ExecuteNonQuery();
+
+						Result=p2.Value.ToString();
+					}
+				}
+				finally
+				{
+					if(connection.State == ConnectionState.Open)
+					{
+						connection.Dispose();
+					}
+				}
+				return Result;
+			}
+
+		}
+
+
+
+		public DataSet GetRDLHlavorate(int wr_id)
+		{
+			DataSet _Ds;		
+			
+			S_ControlsCollection CollezioneControlli = new  S_ControlsCollection();
+			
+			S_Controls.Collections.S_Object p = new S_Object();
+			p.ParameterName = "p_Wr_Id";
+			p.DbType = CustomDBType.Integer;
+			p.Direction = ParameterDirection.Input;
+			p.Value=wr_id;
+			p.Index = CollezioneControlli.Count;
+			CollezioneControlli.Add(p);
+			
+			p = new S_Object();
+			p.ParameterName = "IO_CURSOR";
+			p.DbType = CustomDBType.Cursor;
+			p.Direction = ParameterDirection.Output;
+			p.Index =CollezioneControlli.Count;
+			CollezioneControlli.Add(p);
+
+			string s_StrSql = "PACK_MANCORRETIVA_NUOVA.SP_GET_RDL_H_LAV";	
+			_Ds = _OraDl.GetRows(CollezioneControlli, s_StrSql).Copy();			
+
+			return _Ds;		
+
+		}
+
+		
+		
+		
+		public string GetRDLHTOTlavorate(int P_wr_id)
+		{
+				
+			string Result="";
+			string ConnectionString=ConfigurationSettings.AppSettings.Get("ConnectionString");
+			string s_StrSql = "PACK_MANCORRETIVA_NUOVA.SP_GET_RDL_T_H_LAV";
+			using(OracleConnection connection = new OracleConnection(ConnectionString))
+			{
+				try
+				{
+					connection.Open();
+
+					using(OracleCommand command = new OracleCommand(s_StrSql,connection))
+					{
+						command.CommandType = System.Data.CommandType.StoredProcedure;
+					
+						
+
+						OracleParameter p1 = new OracleParameter("P_wr_id",OracleType.Number);
+						p1.Value     = P_wr_id;
+						p1.Direction = System.Data.ParameterDirection.Input;
+						command.Parameters.Add(p1);	
+
+						OracleParameter p2 = new OracleParameter("MSG_OUT",OracleType.VarChar,100);
+						p2.Value     = "";
+						p2.Direction = System.Data.ParameterDirection.InputOutput;
+						command.Parameters.Add(p2);
+
+						command.ExecuteNonQuery();
+
+						Result=p2.Value.ToString();
+					}
+				}
+				finally
+				{
+					if(connection.State == ConnectionState.Open)
+					{
+						connection.Dispose();
+					}
+				}
+				return Result;
+			}
+
+		}
 
 
 		public  DataSet GetDocumentazione(int id,string TipoDoc)
@@ -1293,36 +1443,6 @@ namespace TheSite.Classi.ManCorrettiva
 
 			return _Ds;		
 		}
-
-
-		public  DataSet GetDocumentazionewo(string wo)
-		{			
-			DataSet _Ds;		
-			
-			S_ControlsCollection CollezioneControlli = new  S_ControlsCollection();
-			
-			S_Controls.Collections.S_Object p = new S_Object();
-			p.ParameterName = "p_wo_id";
-			p.DbType = CustomDBType.VarChar;
-			p.Direction = ParameterDirection.Input;
-			p.Value=wo;
-			p.Index = CollezioneControlli.Count;
-			CollezioneControlli.Add(p);			
-
-			p = new S_Object();
-			p.ParameterName = "IO_CURSOR";
-			p.DbType = CustomDBType.Cursor;
-			p.Direction = ParameterDirection.Output;
-			p.Index = 2;
-			CollezioneControlli.Add(p);
-
-			string s_StrSql = "PACK_MANCORRETIVA_NUOVA.SP_GETDOCUMENTAZIONEWO";	
-			_Ds = _OraDl.GetRows(CollezioneControlli, s_StrSql).Copy();			
-
-			return _Ds;		
-		}
-		
-		
 		/// <summary>
 		/// Ritorna la Lista dei servizi dedicati a un edificio
 		/// </summary>
@@ -1605,6 +1725,36 @@ namespace TheSite.Classi.ManCorrettiva
 		{
 			return null;
 		}
+		
+		public  DataSet GetPianibl(string id_bl)
+		{			
+			DataSet _Ds;
+			
+			S_ControlsCollection CollezioneControlli = new S_ControlsCollection();
+			
+			S_Controls.Collections.S_Object s_p_id_bl = new S_Object();
+			s_p_id_bl.ParameterName = "p_id_bl";
+			s_p_id_bl.DbType = CustomDBType.VarChar;
+			s_p_id_bl.Direction = ParameterDirection.Input;
+			s_p_id_bl.Value=id_bl;
+			s_p_id_bl.Index = CollezioneControlli.Count;
+			CollezioneControlli.Add(s_p_id_bl);
+            			
+			S_Controls.Collections.S_Object s_Cursor = new S_Object();
+			s_Cursor.ParameterName = "IO_CURSOR";
+			s_Cursor.DbType = CustomDBType.Cursor;
+			s_Cursor.Direction = ParameterDirection.Output;
+			s_Cursor.Index = CollezioneControlli.Count;
+
+			CollezioneControlli.Add(s_Cursor);
+
+			ApplicationDataLayer.OracleDataLayer _OraDl = new OracleDataLayer(s_ConnStr);
+			string s_StrSql = "PACK_MAN_ORD.SP_GETPIANIBL";	
+			_Ds = _OraDl.GetRows(CollezioneControlli, s_StrSql).Copy();			
+
+			return _Ds;				
+		}
+		
 
 		public  DataSet GetAnalisiRDLExcel(S_ControlsCollection CollezioneControlli,string utente)
 		{
@@ -1857,6 +2007,99 @@ namespace TheSite.Classi.ManCorrettiva
 			
 		}
 
+		public  int InsHRdl(S_ControlsCollection CollezioneControlli)
+		{
+			int i_Result=0;
+			
+			S_Controls.Collections.S_Object s_IdOut = new S_Object();
+			s_IdOut.ParameterName = "p_IdOut";
+			s_IdOut.DbType = CustomDBType.Integer;
+			s_IdOut.Direction = ParameterDirection.Output;
+			s_IdOut.Index = CollezioneControlli.Count;
+			CollezioneControlli.Add(s_IdOut);
+    
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.INS_WR_H_LAV");
+
+			return i_Result;
+			
+		}
+
+		public  int checkHRdl(int p_wr_id )
+		{
+			int i_Result=0;
+			S_ControlsCollection CollezioneControlli =new S_ControlsCollection();
+			
+			S_Controls.Collections.S_Object s_p_wr_id = new S_Object();
+			s_p_wr_id.ParameterName = "P_wr_id";
+			s_p_wr_id.DbType = CustomDBType.Integer;
+			s_p_wr_id.Direction = ParameterDirection.Input;
+			s_p_wr_id.Index = CollezioneControlli.Count;
+			s_p_wr_id.Value=p_wr_id;
+			CollezioneControlli.Add(s_p_wr_id);			
+			
+			
+			S_Controls.Collections.S_Object s_IdOut = new S_Object();
+			s_IdOut.ParameterName = "p_IdOut";
+			s_IdOut.DbType = CustomDBType.Integer;
+			s_IdOut.Direction = ParameterDirection.Output;
+			s_IdOut.Index = CollezioneControlli.Count;
+			CollezioneControlli.Add(s_IdOut);
+    
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.SP_ck_GET_RDL_H_LAV");
+
+			return i_Result;
+			
+		}
+		public  int ExecuteUpdateDOCWO(S_ControlsCollection CollezioneControlli)
+		{
+			int i_Result=0;
+			int i_MaxParametri = CollezioneControlli.Count + 1;				
+
+			i_MaxParametri ++;
+
+			S_Controls.Collections.S_Object s_IdOut = new S_Object();
+			s_IdOut.ParameterName = "p_IdOut";
+			s_IdOut.DbType = CustomDBType.Integer;
+			s_IdOut.Direction = ParameterDirection.Output;
+			s_IdOut.Index = i_MaxParametri;
+
+			
+			CollezioneControlli.Add(s_IdOut);
+    
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.SP_EXDOCUMENTAZIONEWO");
+
+			return i_Result;
+			
+		}
+		public  DataSet GetDocumentazionewo(string wo)
+		{			
+			DataSet _Ds;		
+			
+			S_ControlsCollection CollezioneControlli = new  S_ControlsCollection();
+			
+			S_Controls.Collections.S_Object p = new S_Object();
+			p.ParameterName = "p_wo_id";
+			p.DbType = CustomDBType.VarChar;
+			p.Direction = ParameterDirection.Input;
+			p.Value=wo;
+			p.Index = CollezioneControlli.Count;
+			CollezioneControlli.Add(p);			
+
+			p = new S_Object();
+			p.ParameterName = "IO_CURSOR";
+			p.DbType = CustomDBType.Cursor;
+			p.Direction = ParameterDirection.Output;
+			p.Index = 2;
+			CollezioneControlli.Add(p);
+
+			string s_StrSql = "PACK_MANCORRETIVA_NUOVA.SP_GETDOCUMENTAZIONEWO";	
+			_Ds = _OraDl.GetRows(CollezioneControlli, s_StrSql).Copy();			
+
+			return _Ds;		
+		}
+
+
+
 
 		#region Proprietà Private
 
@@ -2061,33 +2304,37 @@ namespace TheSite.Classi.ManCorrettiva
 		public  int ExecuteUpdateSGA1(S_ControlsCollection CollezioneControlli)
 		{
 			int i_Result=0;
-			int i_MaxParametri = CollezioneControlli.Count + 1;			
-			
+				
 			S_Controls.Collections.S_Object s_CurrentUser = new S_Object();
 			s_CurrentUser.ParameterName = "p_CurrentUser";
 			s_CurrentUser.DbType = CustomDBType.VarChar;
 			s_CurrentUser.Direction = ParameterDirection.Input;
-			s_CurrentUser.Index = i_MaxParametri;
+			s_CurrentUser.Index = CollezioneControlli.Count;
 			s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
 			CollezioneControlli.Add(s_CurrentUser);	
 
-			i_MaxParametri ++;
 
 			S_Controls.Collections.S_Object s_IdOut = new S_Object();
 			s_IdOut.ParameterName = "p_IdOut";
 			s_IdOut.DbType = CustomDBType.Integer;
 			s_IdOut.Direction = ParameterDirection.Output;
-			s_IdOut.Index = i_MaxParametri;
-
-			
+			s_IdOut.Index = CollezioneControlli.Count;			
 			CollezioneControlli.Add(s_IdOut);
     
-			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_updateSga");
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_updateSgaNUOVA1");
+
+		
+
 
 			return i_Result;
-			
+
+
+
+
+
+
+
 		}
-		
 		public  int ExecuteUpdateSGARIFSOSP(S_ControlsCollection CollezioneControlli)
 		{
 			int i_Result=0;
@@ -2117,9 +2364,8 @@ namespace TheSite.Classi.ManCorrettiva
 			return i_Result;
 			
 		}
-
-
-		public  int ExecuteUpdateSGA2(S_ControlsCollection CollezioneControlli)
+		
+		public  int ExecuteUpdateSGARIFSOSP1(S_ControlsCollection CollezioneControlli)
 		{
 			int i_Result=0;
 			int i_MaxParametri = CollezioneControlli.Count + 1;			
@@ -2143,11 +2389,94 @@ namespace TheSite.Classi.ManCorrettiva
 			
 			CollezioneControlli.Add(s_IdOut);
     
-			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_updateSga_rev");
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_updateSgarifsos1");
 
 			return i_Result;
 			
 		}
+
+
+
+		public  int UpdateSGA1_MIES(S_ControlsCollection CollezioneControlli)
+		{
+			int i_Result=0;
+				
+			S_Controls.Collections.S_Object s_CurrentUser = new S_Object();
+			s_CurrentUser.ParameterName = "p_CurrentUser";
+			s_CurrentUser.DbType = CustomDBType.VarChar;
+			s_CurrentUser.Direction = ParameterDirection.Input;
+			s_CurrentUser.Index = CollezioneControlli.Count;
+			s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
+			CollezioneControlli.Add(s_CurrentUser);	
+
+
+			S_Controls.Collections.S_Object s_IdOut = new S_Object();
+			s_IdOut.ParameterName = "p_IdOut";
+			s_IdOut.DbType = CustomDBType.Integer;
+			s_IdOut.Direction = ParameterDirection.Output;
+			s_IdOut.Index = CollezioneControlli.Count;			
+			CollezioneControlli.Add(s_IdOut);
+    
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_updateSga_MIES");
+
+			return i_Result;
+			
+		}
+
+			
+		public  int UpdateSGA1_MIES_rev(S_ControlsCollection CollezioneControlli)
+		{
+			int i_Result=0;
+				
+			S_Controls.Collections.S_Object s_CurrentUser = new S_Object();
+			s_CurrentUser.ParameterName = "p_CurrentUser";
+			s_CurrentUser.DbType = CustomDBType.VarChar;
+			s_CurrentUser.Direction = ParameterDirection.Input;
+			s_CurrentUser.Index = CollezioneControlli.Count;
+			s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
+			CollezioneControlli.Add(s_CurrentUser);	
+
+
+			S_Controls.Collections.S_Object s_IdOut = new S_Object();
+			s_IdOut.ParameterName = "p_IdOut";
+			s_IdOut.DbType = CustomDBType.Integer;
+			s_IdOut.Direction = ParameterDirection.Output;
+			s_IdOut.Index = CollezioneControlli.Count;			
+			CollezioneControlli.Add(s_IdOut);
+    
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_updateSga_MIES_rev");
+
+			return i_Result;
+			
+		}
+
+		public  int UpdateSGA1_EDILE(S_ControlsCollection CollezioneControlli)
+		{
+			int i_Result=0;
+				
+			S_Controls.Collections.S_Object s_CurrentUser = new S_Object();
+			s_CurrentUser.ParameterName = "p_CurrentUser";
+			s_CurrentUser.DbType = CustomDBType.VarChar;
+			s_CurrentUser.Direction = ParameterDirection.Input;
+			s_CurrentUser.Index = CollezioneControlli.Count;
+			s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
+			CollezioneControlli.Add(s_CurrentUser);	
+
+
+			S_Controls.Collections.S_Object s_IdOut = new S_Object();
+			s_IdOut.ParameterName = "p_IdOut";
+			s_IdOut.DbType = CustomDBType.Integer;
+			s_IdOut.Direction = ParameterDirection.Output;
+			s_IdOut.Index = CollezioneControlli.Count;			
+			CollezioneControlli.Add(s_IdOut);
+    
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_updateSga_EDILE");
+
+			return i_Result;
+			
+		}
+
+
 
 
 		public  int ExecuteUpdateCompletamentoNew(S_ControlsCollection CollezioneControlli)
@@ -2215,15 +2544,14 @@ namespace TheSite.Classi.ManCorrettiva
 			int i_Result=0;
 			int i_MaxParametri = CollezioneControlli.Count;			
 			
-			S_Controls.Collections.S_Object s_CurrentUser = new S_Object();
-			s_CurrentUser.ParameterName = "p_CurrentUser";
-			s_CurrentUser.DbType = CustomDBType.VarChar;
-			s_CurrentUser.Direction = ParameterDirection.Input;
-			s_CurrentUser.Index = i_MaxParametri;
-			s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
-			CollezioneControlli.Add(s_CurrentUser);	
-
-			i_MaxParametri ++;
+//			S_Controls.Collections.S_Object s_CurrentUser = new S_Object();
+//			s_CurrentUser.ParameterName = "p_CurrentUser";
+//			s_CurrentUser.DbType = CustomDBType.VarChar;
+//			s_CurrentUser.Direction = ParameterDirection.Input;
+//			s_CurrentUser.Index = i_MaxParametri;
+//			s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
+//			CollezioneControlli.Add(s_CurrentUser);	
+//			i_MaxParametri ++;
 
 			S_Controls.Collections.S_Object s_IdOut = new S_Object();
 			s_IdOut.ParameterName = "p_IdOut";
@@ -2234,7 +2562,7 @@ namespace TheSite.Classi.ManCorrettiva
 			
 			CollezioneControlli.Add(s_IdOut);
     
-			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_Completamento_new_rev");
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_Completamnetonew_rev1");
 
 			return i_Result;
 			
@@ -2245,15 +2573,14 @@ namespace TheSite.Classi.ManCorrettiva
 			int i_Result=0;
 			int i_MaxParametri = CollezioneControlli.Count;			
 			
-			S_Controls.Collections.S_Object s_CurrentUser = new S_Object();
-			s_CurrentUser.ParameterName = "p_CurrentUser";
-			s_CurrentUser.DbType = CustomDBType.VarChar;
-			s_CurrentUser.Direction = ParameterDirection.Input;
-			s_CurrentUser.Index = i_MaxParametri;
-			s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
-			CollezioneControlli.Add(s_CurrentUser);	
-
-			i_MaxParametri ++;
+						S_Controls.Collections.S_Object s_CurrentUser = new S_Object();
+						s_CurrentUser.ParameterName = "p_CurrentUser";
+						s_CurrentUser.DbType = CustomDBType.VarChar;
+						s_CurrentUser.Direction = ParameterDirection.Input;
+						s_CurrentUser.Index = i_MaxParametri;
+						s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
+						CollezioneControlli.Add(s_CurrentUser);	
+						i_MaxParametri ++;
 
 			S_Controls.Collections.S_Object s_IdOut = new S_Object();
 			s_IdOut.ParameterName = "p_IdOut";
@@ -2264,13 +2591,12 @@ namespace TheSite.Classi.ManCorrettiva
 			
 			CollezioneControlli.Add(s_IdOut);
     
-			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_Completamento_new_rev1");
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_Completamnetonew_rev1");
 
 			return i_Result;
 			
 		}
-
-		public  int Completamentonew_rev2(S_ControlsCollection CollezioneControlli)
+		public  int Completamentonew_MIES(S_ControlsCollection CollezioneControlli)
 		{
 			int i_Result=0;
 			int i_MaxParametri = CollezioneControlli.Count;			
@@ -2282,7 +2608,6 @@ namespace TheSite.Classi.ManCorrettiva
 			s_CurrentUser.Index = i_MaxParametri;
 			s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
 			CollezioneControlli.Add(s_CurrentUser);	
-
 			i_MaxParametri ++;
 
 			S_Controls.Collections.S_Object s_IdOut = new S_Object();
@@ -2294,7 +2619,66 @@ namespace TheSite.Classi.ManCorrettiva
 			
 			CollezioneControlli.Add(s_IdOut);
     
-			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_Completamento_new_rev2");
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_Completamnetonew_MIES");
+
+			return i_Result;
+			
+		}
+
+		public  int Completamentonew_MIES_rev(S_ControlsCollection CollezioneControlli)
+		{
+			int i_Result=0;
+			int i_MaxParametri = CollezioneControlli.Count;			
+			
+			S_Controls.Collections.S_Object s_CurrentUser = new S_Object();
+			s_CurrentUser.ParameterName = "p_CurrentUser";
+			s_CurrentUser.DbType = CustomDBType.VarChar;
+			s_CurrentUser.Direction = ParameterDirection.Input;
+			s_CurrentUser.Index = i_MaxParametri;
+			s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
+			CollezioneControlli.Add(s_CurrentUser);	
+			i_MaxParametri ++;
+
+			S_Controls.Collections.S_Object s_IdOut = new S_Object();
+			s_IdOut.ParameterName = "p_IdOut";
+			s_IdOut.DbType = CustomDBType.Integer;
+			s_IdOut.Direction = ParameterDirection.Output;
+			s_IdOut.Index = i_MaxParametri;
+
+			
+			CollezioneControlli.Add(s_IdOut);
+    
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_Completamnetonew_MIES_rev");
+
+			return i_Result;
+			
+		}
+
+
+		public  int Completamentonew_EDILE(S_ControlsCollection CollezioneControlli)
+		{
+			int i_Result=0;
+			int i_MaxParametri = CollezioneControlli.Count;			
+			
+			S_Controls.Collections.S_Object s_CurrentUser = new S_Object();
+			s_CurrentUser.ParameterName = "p_CurrentUser";
+			s_CurrentUser.DbType = CustomDBType.VarChar;
+			s_CurrentUser.Direction = ParameterDirection.Input;
+			s_CurrentUser.Index = i_MaxParametri;
+			s_CurrentUser.Value = System.Web.HttpContext.Current.User.Identity.Name;
+			CollezioneControlli.Add(s_CurrentUser);	
+			i_MaxParametri ++;
+
+			S_Controls.Collections.S_Object s_IdOut = new S_Object();
+			s_IdOut.ParameterName = "p_IdOut";
+			s_IdOut.DbType = CustomDBType.Integer;
+			s_IdOut.Direction = ParameterDirection.Output;
+			s_IdOut.Index = i_MaxParametri;
+
+			
+			CollezioneControlli.Add(s_IdOut);
+    
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.sp_Completamento_EDILE");
 
 			return i_Result;
 			
@@ -2322,6 +2706,25 @@ namespace TheSite.Classi.ManCorrettiva
 			return i_Result;
 			
 		}
+		
+		public  int ExecuteDELHLAV(S_ControlsCollection CollezioneControlli)
+		{
+			int i_Result=0;		
+
+			S_Controls.Collections.S_Object s_IdOut = new S_Object();
+			s_IdOut.ParameterName = "p_IdOut";
+			s_IdOut.DbType = CustomDBType.Integer;
+			s_IdOut.Direction = ParameterDirection.Output;
+			s_IdOut.Index = CollezioneControlli.Count;			
+			CollezioneControlli.Add(s_IdOut);
+    
+			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.DEL_WR_H_LAV");
+
+			return i_Result;
+			
+		}
+
+
 
 		public  int ExecuteUpdateDOC1(S_ControlsCollection CollezioneControlli)
 		{
@@ -2345,30 +2748,6 @@ namespace TheSite.Classi.ManCorrettiva
 			
 		}
 
-		
-		public  int ExecuteUpdateDOCWO(S_ControlsCollection CollezioneControlli)
-		{
-			int i_Result=0;
-			int i_MaxParametri = CollezioneControlli.Count + 1;				
-
-			i_MaxParametri ++;
-
-			S_Controls.Collections.S_Object s_IdOut = new S_Object();
-			s_IdOut.ParameterName = "p_IdOut";
-			s_IdOut.DbType = CustomDBType.Integer;
-			s_IdOut.Direction = ParameterDirection.Output;
-			s_IdOut.Index = i_MaxParametri;
-
-			
-			CollezioneControlli.Add(s_IdOut);
-    
-			i_Result = _OraDl.GetRowsAffected(CollezioneControlli, "PACK_MANCORRETIVA_NUOVA.SP_EXDOCUMENTAZIONEWO");
-
-			return i_Result;
-			
-		}
-		
-		
 		public  int ExecuteUpdatePreventivo(S_ControlsCollection CollezioneControlli)
 		{
 			int i_Result=0;

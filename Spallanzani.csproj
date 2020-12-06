@@ -2911,6 +2911,7 @@
       <SubType>Form</SubType>
     </Content>
     <Content Include="esempio.htm" />
+    <Content Include="favicon.ico" />
     <Content Include="GestioneControlliPeriodici\CP.aspx" />
     <Content Include="GestioneControlliPeriodici\INSCP.aspx" />
     <Content Include="GestioneSpazi\RicercaSpazi.aspx">
@@ -6645,7 +6646,7 @@
   <ItemGroup>
     <Folder Include="CALCOLATRICE\" />
     <Folder Include="DocumentiProgetto\" />
-    <Folder Include="Doc_DB\" />
+    <Folder Include="Doc_DB\PLANIMETRIE\planimetria-stato_DI_FATTO\" />
     <Folder Include="EQAllegati\" />
     <Folder Include="EQImages\" />
     <Folder Include="FileWebStat\" />

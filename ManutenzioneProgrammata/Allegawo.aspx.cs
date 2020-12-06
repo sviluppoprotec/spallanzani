@@ -51,10 +51,10 @@ namespace TheSite.ManutenzioneProgrammata
 				lblestfile.Text=Wo;
 				
 				string mes = "<script language=\"javascript\">\n";			
-				mes += "opener.refreshgriglia();";
+				// mes += "opener.refreshgriglia();";
 				mes += "</script>\n";
 
-				this.Page.RegisterStartupScript("agg",mes);
+				// this.Page.RegisterStartupScript("agg",mes);
 				LoadDocument();
 			}
 

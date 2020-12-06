@@ -260,7 +260,7 @@ namespace TheSite.WebControls
 		protected DataTable GetManodopera()
 		{
 			ClManCorrettiva ioDati = new ClManCorrettiva();
-			DataSet DsMateriali = ioDati.getBindComboManodopera(_wrId).Copy();
+			DataSet DsMateriali = ioDati.getBindComboManodopera(wrId).Copy();
 			return DsMateriali.Tables[0];
 		}	
 		protected int GetIndex(string item)
@@ -268,7 +268,7 @@ namespace TheSite.WebControls
 			if (item.Length > 0 )
 			{
 				ClManCorrettiva ioDati = new ClManCorrettiva();
-				DataSet DsMateriali = ioDati.getBindComboManodopera(_wrId).Copy();
+				DataSet DsMateriali = ioDati.getBindComboManodopera(wrId).Copy();
 				int cnt =0;
 				foreach(DataRow rw in DsMateriali.Tables[0].Rows)
 				{
