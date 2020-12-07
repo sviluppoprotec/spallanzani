@@ -36,7 +36,7 @@
 									<TD style="HEIGHT: 35px" valign="middle" colspan="2" class="TitleSearch" align="center">
 										<B>
 											<%= TheSite.Classi.Helper.GetApplicationName()%>
-											&nbsp;- SIR - CONSIP</B> SPALLANZANI
+											&nbsp;- SIR - CONSIP  SPALLANZANI</B>
 									</TD>
 								</TR>
 								<TR>
@@ -65,7 +65,7 @@
 								<TR>
 									<TD colspan="2">Inserisci la username e la password relativa al sistema informativo 
 										per la gestione dei servizi di: <b>
-											<%= TheSite.Classi.Helper.GetApplicationName()%>
+											SIR - CONSIP SPALLANZANI</B> 
 										</b>
 									</TD>
 								</TR>

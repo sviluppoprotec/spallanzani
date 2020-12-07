@@ -17,7 +17,7 @@ namespace TheSite.Classi
 	{
 		public static string GetApplicationName()
 		{
-			string ApplicationName="Engie";
+			string ApplicationName="Engie Servizi SpA";
 //			if(HttpContext.Current.User.IsInRole("AVE") && !HttpContext.Current.User.IsInRole("Vod"))
 //				ApplicationName=System.Configuration.ConfigurationSettings.AppSettings["ApplicationName"];
 //
