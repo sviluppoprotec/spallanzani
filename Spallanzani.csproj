@@ -2001,6 +2001,13 @@
       <DependentUpon>Autentica.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="RichiesteDati\LoginCallCenter.aspx.cs">
+      <DependentUpon>LoginCallCenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RichiesteDati\LoginCallCenter.aspx.designer.cs">
+      <DependentUpon>LoginCallCenter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RichiesteDati\prova.aspx.cs">
       <DependentUpon>prova.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4848,6 +4855,7 @@
       <SubType>Form</SubType>
     </Content>
     <Content Include="RichiesteDati\Autentica.aspx" />
+    <Content Include="RichiesteDati\LoginCallCenter.aspx" />
     <Content Include="RichiesteDati\prova.aspx" />
     <Content Include="SchemiXSD\DsAnalisiStatistiche.xsd">
       <Generator>MSDataSetGenerator</Generator>

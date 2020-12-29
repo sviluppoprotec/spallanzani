@@ -63,8 +63,8 @@
 									<TD style="HEIGHT: 43px" colspan="2" align="center"><ASP:BUTTON id="BttConferma" runat="server" text="Conferma" cssclass="btn"></ASP:BUTTON></TD>
 								</TR>
 								<TR>
-									<TD colspan="2">Inserisci la username e la password relativa al sistema informativo 
-										per la gestione dei servizi di: <b>
+									<TD colspan="2">Inserisci la username e la password relativa al sistema informativo:
+										<br /><b>
 											SIR - CONSIP SPALLANZANI</B> 
 										</b>
 									</TD>
