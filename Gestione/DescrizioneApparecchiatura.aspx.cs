@@ -1009,7 +1009,8 @@ namespace TheSite.Gestione
 			s_p_id_ente_erogante.Direction = ParameterDirection.Input;
 			s_p_id_ente_erogante.Index =_SColl.Count;
 			s_p_id_ente_erogante.Size =23;
-			s_p_id_ente_erogante.Value =Convert.ToInt32(cmbEnteErogante.SelectedValue) ;
+			s_p_id_ente_erogante.Value = (cmbEnteErogante.SelectedValue.ToString()=="")? 0: Convert.ToInt32(cmbEnteErogante.SelectedValue);
+		
 			_SColl.Add(s_p_id_ente_erogante);
 
 			//*******************//
